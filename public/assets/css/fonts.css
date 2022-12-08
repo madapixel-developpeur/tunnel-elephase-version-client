@@ -1,0 +1,25 @@
+
+@font-face{
+    font-family: "Helvetica Neue LT 35 Thin";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 35 Thin.ttf');
+}
+@font-face{
+    font-family: "Helvetica Neue LT 45 Light";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 45 Light.ttf');
+}
+@font-face{
+    font-family: "Helvetica Neue LT 65 Medium";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 65 Medium.ttf');
+}
+@font-face{
+    font-family: "Helvetica Neue LT 75 Bold";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 75 Bold.ttf');
+}
+@font-face{
+    font-family: "Helvetica Neue LT 85 Heavy";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 85 Heavy.ttf');
+}
+@font-face{
+    font-family: "Helvetica Neue LT 95 Black";
+    src : url('/assets/fonts/HelveticaNeue/Helvetica Neue LT 95 Black.ttf');
+}

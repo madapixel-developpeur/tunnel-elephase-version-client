@@ -1,0 +1,108 @@
+{% extends '../../base_admin.html.twig' %}
+
+{% block title %}Détails du produit{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/image-zoom.css') }}">
+{% endblock %}
+
+{% block body %}
+   <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li>Détails du produit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--product details start-->
+    <div class="product_details mb-60">
+        <div class="container" style="padding-bottom:8rem !important;">
+            <div class="row">
+                <div class="col-lg-5 col-md-5">
+                    <div class="product-details-tab">
+                        <div id="img-1" class="zoomWrapper zoom-box single-zoom">
+                            <span class="zoom-image-custom" style="width : 100%; display : flex; justify-content : center;">
+                                <img id="zoom1"  src="{{ asset( files_directory_relative ~ product.image) }}"
+                                    data-zoom-image="{{ asset( files_directory_relative ~ product.image) }}" alt="Aromaforest, {{product.name}}">
+                            </span>
+                        </div>
+                        <div class="single-zoom-thumb">
+                            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update=""
+                                       data-image="{{ asset( files_directory_relative ~ product.image) }}"
+                                       data-zoom-image="{{ asset( files_directory_relative ~ product.image) }}">
+                                        <img src="{{ asset( files_directory_relative ~ product.image) }}"  alt="zo-th-1" />
+                                    </a>
+
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="product_d_right">
+
+                            <div class="productd_title_nav">
+                                <h1><a href="#">{{product.name}}</a></h1>
+                            </div>
+                            <div class="price_box">
+                                <span class="current_price">{{product.cost|format_currency('EUR')}}</span>
+                                <span class="old_price"></span>
+                            </div>
+
+                            <div class="product_desc">
+                                <p>{{product.description == null ? 'Pas de description pour ce produit' : product.description}}</p>
+                            </div>
+                            <div class="product_variant quantity">
+                                 <form action="{{path('app_admin_product_delete', {'id': product.id})}}" method="POST">
+                                    <button class="button" type="submit" style="margin:0; background-color : #d52121; min-width : 0px; padding : 0px 10px;">Supprimer le produit</button>
+                                </form>
+                                <form action="{{path('app_admin_product_edit', {'id': product.id})}}" method="GET">
+                                    <button class="button" type="submit" style="margin-left:10px; background-color : #777; min-width : 0px; padding : 0px 10px;">Modifier le produit</button>
+                                </form>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--product details end-->
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('/assets/js/image-zoom.js') }}" type="text/javascript"></script>
+    <script>
+
+        var $ = jQuery.noConflict();
+
+        $(document).ready(function(){
+            const zoomImage = $('#zoom1').clone();
+            $('#zoom1').imageZoom({zoom : 200});
+            $(this).on('click','.elevatezoom-gallery', function(e) {
+                e.preventDefault();
+                // $('#imageZoom')[0].src = $(this).find('img').attr('src');
+                $('.containerZoom').remove();
+                zoomImage[0].src = $(this).find('img').attr('src')
+                $('.zoom-image-custom').html(zoomImage);
+                $('#zoom1').imageZoom({zoom : 200});
+            })
+        });
+
+    </script>
+{% endblock %}

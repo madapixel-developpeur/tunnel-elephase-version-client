@@ -1,0 +1,93 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/templates/blog/blog.style.css') }}">
+{% endblock %}
+
+{% block body %}
+   <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="{{ path('app_admin_blog_index') }}">Blog</a></li>
+                            <li>Formulaire article</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <div class="container pb-5">
+        <div class="block block--bordered block--rounded">
+            <h1 class="block__text block__text--center mt-2" >Formulaire article :</h1>
+                
+                {{ form_start(form, {'attr': {'class': 'my-form', 'id': 'category-form'}}) }}
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        <div class="alert-body">
+                            {{error}}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.titre)}}
+                        {{form_widget(form.titre,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.titre)}}
+                    </div>
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.description)}}
+                        {{form_widget(form.description,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.description)}}
+                    </div>
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.nomAuteur)}}
+                        {{form_widget(form.nomAuteur,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.nomAuteur)}}
+                    </div>
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.categorie)}}
+                        {{form_widget(form.categorie,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.categorie)}}
+                    </div>
+                    <div class="my-form-widget form-group tags-wrapper">
+                        {{form_label(form.tagsArray)}}
+                        {{form_widget(form.tagsArray)}}
+                        {{form_errors(form.tagsArray)}}
+                    </div>
+                    <div class="my-form-widget">
+                        {{form_label(form.contenu)}}
+                        {{form_widget(form.contenu)}}
+                        {{form_errors(form.contenu)}}
+                    </div>
+                    <div class="my-form-widget">
+                        {{form_label(form.imageFile)}}
+                        {{form_widget(form.imageFile,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.imageFile)}}
+                    </div>
+                    <div class="my-form-img-preview-container">
+                        {% if blog != null and blog.image != null %}
+                            <img class="my-form-img-preview" id="my-form-img-preview" src="{{ asset( files_directory_relative ~ blog.image) }}" alt="Image pour {{blog.titre}}" />
+                        {% endif %}
+                    </div>
+                    <div class="btn-wrap">
+                        <button class="btn btn--primary" type="submit"><i data-feather="save"></i>{{ isEdit ? 'Enregistrer les modifications' : 'Créer' }}</button>
+                    </div>
+                {{ form_end(form) }}
+        </div>
+    </div>
+    
+    
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

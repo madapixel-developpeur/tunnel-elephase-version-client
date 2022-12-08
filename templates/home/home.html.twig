@@ -1,0 +1,464 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel='stylesheet' href="{{ asset('assets/css/pages/home.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+<div class="kleanity-page-wrapper" id="kleanity-page-wrapper">
+    
+    <div class="gdlr-core-page-builder-body">
+        <div class="gdlr-core-pbf-wrapper " style="padding: 210px 0px 150px 0px; color: #fff;">
+            <div class="gdlr-core-pbf-background-wrap my-bg-black" >
+                {# <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" style="background-image: url(upload/hp3-section-2.jpg);background-repeat: no-repeat;background-position: center;" data-parallax-speed="0.3"></div> #}
+            </div>
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                {% for label, messages in app.flashes %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-{{label}}">{{ message | raw }}</div>
+                                    {% endfor %}
+                                {% endfor %}
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 15px;">
+                                        <div class="gdlr-core-title-item-title-wrap ">
+                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 50px;font-weight: 300;letter-spacing: 0px;text-transform: uppercase; color: #fff;">Le coffret beauté bio et engagé<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3></div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" style="padding-bottom: 15px;">
+                                        <div class="gdlr-core-text-box-item-content" style="font-size: 17px;">
+                                            <p> Elephas Paris vous donne les meilleurs produits de beauté éco-responsables, sains et éthiques.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align"><a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border my-bg-orange" href="{{path('app_checkout')}}" style="margin-bottom:26px;font-size: 12px;padding: 18px 33px 18px 33px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px; color: var(--color-black);"><span class="gdlr-core-content">Commandez</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="d-flex align-items-end justify-content-around">
+                                    <img src="{{asset('assets/utils/images/Calque -2.png')}}" />
+                                    <img src="{{asset('assets/utils/images/Calque -1.png')}}" class="mx-md-3" />
+                                    <img src="{{asset('assets/utils/images/Calque -3.png')}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 100px 0px 30px 0px;">
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 25px;">
+                                        <div class="gdlr-core-title-item-title-wrap ">
+                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 25px;font-weight: 100;letter-spacing: 0px;text-transform: uppercase;">Votre premier cadeau de Noël consacré à l’environnement .<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3></div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-divider-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-divider-item-normal">
+                                        <div class="gdlr-core-divider-container gdlr-core-left-align" style="max-width: 35px;">
+                                            <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color: #2b2b2b;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="padding: 0px 0px 35px 0px;">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
+                                        <div class="gdlr-core-text-box-item-content" style="font-size: 15px;">
+                                            <p>Un ensemble cosmétique bio et naturel en coffret pour protéger la peau au quotidien de la pollution et prévenir du vieillissement prématuré. Un cadeau pour rayonner de beauté et d’engagement puisque qu’ELEPHAS est reconnue par l’ONU pour ses réels impacts positifs sur la conservation des habitats des éléphants et sur le développement local durable.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-element">
+                        <div class="text-center gdlr-core-personnel-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-personnel-item-style-grid gdlr-core-personnel-style-grid" style="padding-bottom: 0px;">
+                            <div class="gdlr-core-personnel-list-column  gdlr-core-column-20 gdlr-core-column-first gdlr-core-item-pdlr">
+                                <div class="gdlr-core-personnel-list clearfix">
+                                    <div class="gdlr-core-personnel-list-image gdlr-core-media-image  gdlr-core-zoom-on-hover">
+                                        <a href="#"><img width="200" src="{{asset('assets/utils/images/Calque -2.png')}}"   alt=""></a>
+                                    </div>
+                                    <div class="gdlr-core-personnel-list-content-wrap">
+                                        <h3 class="gdlr-core-personnel-list-title" style="font-weight: 800;"><a href="#">Moringa Basic Care</a></h3>
+                                        <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption my-font-regular" style="font-size: 15px;font-style: normal;">une lotion botanique nettoyante aux extraits de Moringa, Harpagophytum, huile de Karanja bio et jus d’Aloe pour purifier le visage.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gdlr-core-personnel-list-column  gdlr-core-column-20 gdlr-core-item-pdlr">
+                                <div class="gdlr-core-personnel-list clearfix">
+                                    <div class="gdlr-core-personnel-list-image gdlr-core-media-image  gdlr-core-zoom-on-hover">
+                                        <a href="#"><img width="200" src="{{asset('assets/utils/images/Calque -1.png')}}"   alt=""></a>
+                                    </div>
+                                    <div class="gdlr-core-personnel-list-content-wrap">
+                                        <h3 class="gdlr-core-personnel-list-title" style="font-weight: 800;"><a href="#">Crème de jour hydratante Anti-pollution</a></h3>
+                                        <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption my-font-regular" style="font-size: 15px;font-style: normal;"> cette crème du visage au beurre de karité, acide hyaluronique, huile précieuse de Baobab et extraits de Moringa pour protéger, détoxifier et régénérer la peau au quotidien.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gdlr-core-personnel-list-column  gdlr-core-column-20 gdlr-core-item-pdlr">
+                                <div class="gdlr-core-personnel-list clearfix">
+                                    <div class="gdlr-core-personnel-list-image gdlr-core-media-image  gdlr-core-zoom-on-hover">
+                                        <a href="#"><img width="200" src="{{asset('assets/utils/images/Calque -3.png')}}"   alt=""></a>
+                                    </div>
+                                    <div class="gdlr-core-personnel-list-content-wrap">
+                                        <h3 class="gdlr-core-personnel-list-title" style="font-weight: 800;"><a href="#">Huile Botanique Démaquillante</a></h3>
+                                        <div class="gdlr-core-personnel-list-position gdlr-core-info-font gdlr-core-skin-caption my-font-regular" style="font-size: 15px;font-style: normal;">une lotion aux huiles de Coco, de Jojoba, et de Moringa pour la garantie d’un démaquillage doux et efficace.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 80px 0px 80px 0px; color: #fff;">
+            <div class="gdlr-core-pbf-background-wrap my-bg-light-gray" >
+                {# <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" style="background-image: url(upload/hp3-section-2.jpg);background-repeat: no-repeat;background-position: center;" data-parallax-speed="0.3"></div> #}
+            </div>
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                
+                                
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align" style="padding-bottom: 15px;">
+                                        <div class="gdlr-core-text-box-item-content" style="font-size: 17px;">
+                                            <p class="p-fs-mobile" style="font-size: 40px; color: var(--color-black);"> Sublimez votre beauté naturelle avec ELEPHAS Paris. Des cosmétiques respectueux de la peau !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border my-bg-black" href="{{path('app_checkout')}}" style="font-size: 12px;padding: 18px 33px 18px 33px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px; color: var(--color-orange);"><span class="gdlr-core-content">Achetez le coffret à {{ coffret.prix }} €</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 100px 0px 30px 0px;">
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 25px;">
+                                        <div class="gdlr-core-title-item-title-wrap ">
+                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 25px;font-weight: 100;letter-spacing: 0px;text-transform: uppercase;">Les bienfaits d’une routine beauté entièrement verte !<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3></div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-divider-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-divider-item-normal">
+                                        <div class="gdlr-core-divider-container gdlr-core-left-align" style="max-width: 35px;">
+                                            <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color: #2b2b2b;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30"></div>
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first" >
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="coffret-img" style="padding: 100px 100px 0px 0px;" data-sync-height="height-1">
+                            <div class="gdlr-core-pbf-background-wrap" style="">
+                                {# <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js"  data-parallax-speed="0.2"> #}
+                                    <img src="{{asset('assets/utils/images/Image 5.png')}}" >
+                                {# </div> #}
+                            </div>
+                            {# <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content" data-gdlr-animation="fadeInLeft" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"></div> #}
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js "  data-sync-height="height-1" data-sync-height-center>
+                            <div class="gdlr-core-pbf-background-wrap" style=""></div>
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js  gdlr-core-sync-height-content" data-gdlr-animation="fadeInRight" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-no-caption gdlr-core-item-pdlr" >
+                                        <div class="gdlr-core-column-service-media gdlr-core-media-image" style="margin-right: 45px; margin-top: 20px"><img src="{{asset('assets/utils/icones/controle-des-badges.png')}}" alt="" width="40" /></div>
+                                        <div class="gdlr-core-column-service-content-wrapper">
+                                            <div class="gdlr-core-column-service-title-wrap">
+                                                <h3 class="gdlr-core-column-service-title" style="font-size: 19px;font-weight: 600;letter-spacing: 0px;text-transform: none;">Une sélection naturelle et bio</h3></div>
+                                            <div class="gdlr-core-column-service-content">
+                                                <p>Chaque produit soins du coffret a fait l’objet de meilleures sélections d’ingrédients pour apporter à votre peau, un nettoyage en profondeur, idéal pour affronter les agressions d’un mode de vie urbain. 100% naturelle, à la composition écologique et saine.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-no-caption gdlr-core-item-pdlr" >
+                                        <div class="gdlr-core-column-service-media gdlr-core-media-image" ><img src="{{asset('assets/utils/icones/insigne-sherif.png')}}" alt="" width="40" /></div>
+                                        <div class="gdlr-core-column-service-content-wrapper">
+                                            <div class="gdlr-core-column-service-title-wrap">
+                                                <h3 class="gdlr-core-column-service-title" style="font-size: 19px;font-weight: 600;letter-spacing: 0px;text-transform: none;">Une expertise confirmée</h3></div>
+                                            <div class="gdlr-core-column-service-content">
+                                                <p>Les produits Elephas bénéficient de l’expertise d’Olivier BEHRA et de ses années d’expérience en identification et sélection d’actifs auprès des grandes maisons, telles que Chanel, Yves Rocher, ou encore Dessange.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-no-caption gdlr-core-item-pdlr" >
+                                        <div class="gdlr-core-column-service-media gdlr-core-media-image" ><img src="{{asset('assets/utils/icones/diplome.png')}}" alt="" width="40" /></div>
+                                        <div class="gdlr-core-column-service-content-wrapper">
+                                            <div class="gdlr-core-column-service-title-wrap">
+                                                <h3 class="gdlr-core-column-service-title" style="font-size: 19px;font-weight: 600;letter-spacing: 0px;text-transform: none;">Un réel impact environnemental</h3></div>
+                                            <div class="gdlr-core-column-service-content">
+                                                <p>Elephas adopte un modèle économique Wildlife Friendly et membre de Conscious Fashion, elle participe à la conservation des habitats naturels ainsi qu’à la survie des éléphants. Planté en Tazanie et Burkina Faso, le Moringa étant le principal ingrédient de cette routine, offre une alternative aux agricultures dans cette zone.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-column-service-icon-left gdlr-core-no-caption gdlr-core-item-pdlr" >
+                                    <div class="gdlr-core-column-service-media gdlr-core-media-image" ></div>
+                                    <div class="gdlr-core-column-service-content-wrapper" style="padding-left: 7px;">
+                                        <a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border my-bg-black text-center" href="{{path('app_checkout')}}" style="font-size: 12px;padding: 18px 50px 18px 50px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px; color: var(--color-orange);  width: 290px;"><span class="gdlr-core-content">Commandez</span></a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 100px 0px 30px 0px;">
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 25px;">
+                                        <div class="gdlr-core-title-item-title-wrap ">
+                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 25px;font-weight: 100;letter-spacing: 0px;text-transform: uppercase;">De réelles garanties de nos actions.<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3></div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-divider-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-divider-item-normal">
+                                        <div class="gdlr-core-divider-container gdlr-core-left-align" style="max-width: 35px;">
+                                            <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color: #2b2b2b;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gdlr-core-pbf-column gdlr-core-column-30">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="padding: 0px 0px 35px 0px;">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
+                                        <div class="gdlr-core-text-box-item-content" style="font-size: 15px;">
+                                            <p>Les cosmétiques bio et naturels impliquent une formule d’origine naturelle, mais aussi le respect de l’environnement, des engagements sociaux et une communication responsable. Elephas Paris vous garantit que les produits remplissent ces prérequis !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 20px 20px 20px 20px;">
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-element">
+                        <div class="gdlr-core-gallery-item gdlr-core-item-pdb clearfix  gdlr-core-gallery-item-style-grid">
+                            <div class="gdlr-core-gallery-item-holder gdlr-core-js-2 clearfix" data-layout="fitrows">
+                                <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-column-first gdlr-core-item-pdlr gdlr-core-item-mgb">
+                                    <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{{asset('assets/utils/logo/Calque 4.png')}}" alt="" width="138" height="49" /></div>
+                                </div>
+                                <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
+                                    <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{{asset('assets/utils/logo/Calque 5.png')}}" alt="" width="141" height="45" /></div>
+                                </div>
+                                <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
+                                    <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{{asset('assets/utils/logo/Calque 6.png')}}" alt="" width="132" height="46" /></div>
+                                </div>
+                                <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
+                                    <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{{asset('assets/utils/logo/Calque 7.png')}}" alt="" width="148" height="44" /></div>
+                                </div>
+                                <div class="gdlr-core-item-list gdlr-core-gallery-column  gdlr-core-column-12 gdlr-core-item-pdlr gdlr-core-item-mgb">
+                                    <div class="gdlr-core-gallery-list gdlr-core-media-image"><img src="{{asset('assets/utils/logo/Calque 8.png')}}" alt="" width="151" height="33" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-element">
+                        <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border my-bg-black" href="{{path('app_checkout')}}" style="font-size: 12px;padding: 18px 50px 18px 50px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px; color: var(--color-orange);"><span class="gdlr-core-content">Commandez maintenant</span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gdlr-core-pbf-wrapper " style="padding: 160px 0px 120px 0px;">
+            <div class="gdlr-core-pbf-background-wrap">
+                <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" style="background-image: url('/assets/utils/images/Groupe de masques 1.png');background-size: cover;background-position: center;" data-parallax-speed="0.3"></div>
+            </div>
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js "></div>
+                        </div>
+                    </div>
+                    <div class="gdlr-core-pbf-column gdlr-core-column-40" data-skin="Dark">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-testimonial-item gdlr-core-item-pdb clearfix  gdlr-core-testimonial-style-left gdlr-core-item-pdlr">
+                                        <div class="gdlr-core-testimonial-item-title-wrap ">
+                                            <h3 class="gdlr-core-testimonial-item-title" style="font-size: 34px;text-transform: none;">Nos clients témoignent</h3>
+                                            <div class="gdlr-core-flexslider-nav gdlr-core-plain-style gdlr-core-absolute-center gdlr-core-right"></div>
+                                        </div>
+                                        <div class="gdlr-core-flexslider flexslider gdlr-core-js-2 " data-type="carousel" data-column="1" data-nav="navigation" data-nav-parent="gdlr-core-testimonial-item">
+                                            <ul class="slides">
+                                                <li class="gdlr-core-item-mglr">
+                                                    <div class="gdlr-core-testimonial clearfix">
+                                                        <div class="gdlr-core-testimonial-content-wrap">
+                                                            <div class="gdlr-core-testimonial-content gdlr-core-info-font gdlr-core-skin-content" style="font-size: 21px;">
+                                                                <p>“ Je la kiffe et elle sent divinement bon.</p>
+                                                            </div>
+                                                            <div class="gdlr-core-testimonial-author-wrap clearfix">
+                                                                {# <div class="gdlr-core-testimonial-author-image gdlr-core-media-image"><img src="{{asset('assets/kleanity/upload/personnel-4-150x150.jpg')}}" alt="" width="150" height="150" /></div> #}
+                                                                <div class="gdlr-core-testimonial-author-content">
+                                                                    <div class="gdlr-core-testimonial-title gdlr-core-title-font gdlr-core-skin-title">Marie-Lo</div>
+                                                                    <div class="gdlr-core-testimonial-position gdlr-core-info-font gdlr-core-skin-caption">Strasbourg</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="gdlr-core-item-mglr">
+                                                    <div class="gdlr-core-testimonial clearfix">
+                                                        <div class="gdlr-core-testimonial-content-wrap">
+                                                            <div class="gdlr-core-testimonial-content gdlr-core-info-font gdlr-core-skin-content" style="font-size: 21px;">
+                                                                <p>“ Je kiffe cette crème. Ma peau l'adore, c'est comme si j'avais fait un soin.</p>
+                                                            </div>
+                                                            <div class="gdlr-core-testimonial-author-wrap clearfix">
+                                                                {# <div class="gdlr-core-testimonial-author-image gdlr-core-media-image"><img src="{{asset('assets/kleanity/upload/personnel-4-150x150.jpg')}}" alt="" width="150" height="150" /></div> #}
+                                                                <div class="gdlr-core-testimonial-author-content">
+                                                                    <div class="gdlr-core-testimonial-title gdlr-core-title-font gdlr-core-skin-title">Caroline</div>
+                                                                    <div class="gdlr-core-testimonial-position gdlr-core-info-font gdlr-core-skin-caption">Paris</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="gdlr-core-item-mglr">
+                                                    <div class="gdlr-core-testimonial clearfix">
+                                                        <div class="gdlr-core-testimonial-content-wrap">
+                                                            <div class="gdlr-core-testimonial-content gdlr-core-info-font gdlr-core-skin-content" style="font-size: 21px;">
+                                                                <p>“ Sa texture peut surprendre au début parce qu'elle n'est pas pleine de flotte comme dans les crèmes des grands groupes mais en fait elle est absolument géniale et ne laisse pas de film gras!</p>
+                                                            </div>
+                                                            <div class="gdlr-core-testimonial-author-wrap clearfix">
+                                                                {# <div class="gdlr-core-testimonial-author-image gdlr-core-media-image"><img src="{{asset('assets/kleanity/upload/personnel-4-150x150.jpg')}}" alt="" width="150" height="150" /></div> #}
+                                                                <div class="gdlr-core-testimonial-author-content">
+                                                                    <div class="gdlr-core-testimonial-title gdlr-core-title-font gdlr-core-skin-title">Paola</div>
+                                                                    <div class="gdlr-core-testimonial-position gdlr-core-info-font gdlr-core-skin-caption">La Rochelle</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="gdlr-core-item-mglr">
+                                                    <div class="gdlr-core-testimonial clearfix">
+                                                        <div class="gdlr-core-testimonial-content-wrap">
+                                                            <div class="gdlr-core-testimonial-content gdlr-core-info-font gdlr-core-skin-content" style="font-size: 21px;">
+                                                                <p>“ Qu'est ce qu'il y a dedans? Elle est magique! Lol Moi qui ai des problèmes de peau, je trouve que ma peau est radieuse et va beaucoup mieux!</p>
+                                                            </div>
+                                                            <div class="gdlr-core-testimonial-author-wrap clearfix">
+                                                                {# <div class="gdlr-core-testimonial-author-image gdlr-core-media-image"><img src="{{asset('assets/kleanity/upload/personnel-4-150x150.jpg')}}" alt="" width="150" height="150" /></div> #}
+                                                                <div class="gdlr-core-testimonial-author-content">
+                                                                    <div class="gdlr-core-testimonial-title gdlr-core-title-font gdlr-core-skin-title">Irene</div>
+                                                                    <div class="gdlr-core-testimonial-position gdlr-core-info-font gdlr-core-skin-caption">Singapour</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gdlr-core-pbf-wrapper " style="padding: 80px 0px 80px 0px; color: #fff;">
+            <div class="gdlr-core-pbf-background-wrap" >
+                {# <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" style="background-image: url(upload/hp3-section-2.jpg);background-repeat: no-repeat;background-position: center;" data-parallax-speed="0.3"></div> #}
+            </div>
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                    <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first">
+                        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js ">
+                            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                
+                                
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align" style="padding-bottom: 15px;">
+                                        <div class="gdlr-core-text-box-item-content" style="font-size: 17px;">
+                                            <p class="p-fs-mobile" style="font-size: 40px; color: var(--color-black);"> Des produits appréciés pour leur douceur et leur authenticité. Faites-vous plaisir et recevez votre coffret !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-solid gdlr-core-button-no-border my-bg-black" href="{{path('app_checkout')}}" style="font-size: 12px;padding: 18px 33px 18px 33px;border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px; color: var(--color-orange);"><span class="gdlr-core-content">Commandez</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('assets/utils/js/home.js')}}"></script> 
+{% endblock %}

@@ -1,0 +1,15 @@
+section {
+    width : 100%;
+}
+
+section.about_section._s2{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+@media (max-width: 850px) {
+    section.about_section._s2{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

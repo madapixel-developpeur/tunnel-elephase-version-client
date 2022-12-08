@@ -1,0 +1,16 @@
+@font-face{
+    font-family: "Raleway Light";
+    src : url('/assets/utils/fonts/Raleway-Light.ttf');
+}
+@font-face{
+    font-family: "Raleway Regular";
+    src : url('/assets/utils/fonts/Raleway-Regular.ttf');
+}
+
+.my-font-light{
+    font-family: "Raleway Light" !important;
+}
+
+.my-font-regular{
+    font-family: "Raleway Regular" !important;
+}

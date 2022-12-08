@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('assets/img/af_logo.png') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <!-- Favicon -->
+            <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/af_logo.png') }}">
+
+            <!-- CSS
+            ========================= -->
+            <!--bootstrap min css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/bootstrap.min.css') }}">
+            <!--owl carousel min css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/owl.carousel.min.css') }}">
+            <!--slick min css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/slick.css') }}">
+            <!--magnific popup min css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/magnific-popup.css') }}">
+            <!--font awesome css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/font.awesome.css') }}">
+            <!--ionicons css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/ionicons.min.css') }}">
+            <!--simple line icons css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/simple-line-icons.css') }}">
+            <!--animate css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/animate.css') }}">
+            <!--jquery ui min css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/jquery-ui.min.css') }}">
+            <!--slinky menu css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/slinky.menu.css') }}">
+            <!--plugins css-->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/plugins.css') }}">
+
+            <!-- Main Style CSS -->
+            <link rel="stylesheet" href="{{ asset('bonique/assets/css/style.css') }}">
+
+
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fonts.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/atoms.style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/molecules.style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/organisms.style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animations.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/app.css') }}">
+
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <!--modernizr min js here-->
+            <script src="{{ asset('bonique/assets/js/vendor/modernizr-3.7.1.min.js') }}"></script>
+            <!--jquery min js-->
+            <script src="{{ asset('bonique/assets/js/vendor/jquery-3.4.1.min.js') }}"></script>
+            <!--popper min js-->
+            <script src="{{ asset('bonique/assets/js/popper.js') }}"></script>
+            <!--bootstrap min js-->
+            <script src="{{ asset('bonique/assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap-filestyle.min.js') }}"></script>
+            <!--owl carousel min js-->
+            <script src="{{ asset('bonique/assets/js/owl.carousel.min.js') }}"></script>
+            <!--slick min js-->
+            <script src="{{ asset('bonique/assets/js/slick.min.js') }}"></script>
+            <!--magnific popup min js-->
+            <script src="{{ asset('bonique/assets/js/jquery.magnific-popup.min.js') }}"></script>
+            <!--counterup min js-->
+            <script src="{{ asset('bonique/assets/js/jquery.counterup.min.js') }}"></script>
+            <!--jquery countdown min js-->
+            <script src="{{ asset('bonique/assets/js/jquery.countdown.js') }}"></script>
+            <!--jquery ui min js-->
+            <script src="{{ asset('bonique/assets/js/jquery.ui.js') }}"></script>
+            <!--jquery elevatezoom min js-->
+{#            <script src="{{ asset('bonique/assets/js/jquery.elevatezoom.js') }}"></script>#}
+            <!--isotope packaged min js-->
+            <script src="{{ asset('bonique/assets/js/isotope.pkgd.min.js') }}"></script>
+            <!--slinky menu js-->
+            <script src="{{ asset('bonique/assets/js/slinky.menu.js') }}"></script>
+            <!-- Plugins JS -->
+            <script src="{{ asset('bonique/assets/js/plugins.js') }}"></script>
+
+            <!-- Main JS -->
+            <script src="{{ asset('bonique/assets/js/main.js') }}"></script>
+            <script src="{{ asset('bonique/assets/js/utils.js') }}"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    // Hide loader
+                    document.getElementById("loading_aroma").classList.add('hide');
+                });
+            </script>
+            
+        {% endblock %}
+    </head>
+    <body>
+        <div id="loading_aroma">
+            <img src="{{ asset('assets/utils/images/logo.png') }}" alt="">
+        </div>
+        {% include '/partials/header_admin.html.twig' %}
+        {% block body %}{% endblock %}
+    </body>
+</html>

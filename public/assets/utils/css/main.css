@@ -1,0 +1,65 @@
+/* Base  */
+@font-face {
+    font-family: Raleway-regular;
+    src: url(/assets/fonts/Raleway/Raleway-Regular.ttf);
+}
+
+body, button, a {
+    font-family: Raleway-regular !important;
+}
+
+footer {
+    background-color: #363839;
+}
+/* Base  */
+
+.background-white{
+    background-color: #fff;
+    opacity: 1 !important;
+}
+
+.bg-image-1{
+    background-image: url('/assets/utils/fonts/Raleway-Regular.ttf');
+}
+
+.fa-facebook-f:before {
+    content: "\f39e" !important;
+}
+
+.footer-social-net h3{
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.kleanity-footer-column{
+    text-align: center;
+}
+
+
+footer .kleanity-widget-title{
+    margin-bottom: 8px!important;
+}
+
+footer .footer-contact-info p{
+    margin-bottom: 1px;
+}
+
+footer .kleanity-copyright-wrapper .kleanity-copyright-text{
+    font-weight: bold;
+    color: white ;
+}
+
+footer .kleanity-copyright-wrapper .kleanity-copyright-text a{
+    color: white ;
+
+}
+
+@media only screen and (max-width: 600px) {
+ #coffret-img {
+     height: 61vh !important;
+ }
+    .p-fs-mobile {
+        font-size:22px !important;
+    }
+}

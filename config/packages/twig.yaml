@@ -1,0 +1,11 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    globals:
+        files_directory: '%kernel.project_dir%/public/files'
+        files_directory_relative: 'files/'
+        stripe_public_key: '%env(STRIPE_PUBLIC_KEY)%'
+        my_currency: 'EUR'
+        locale: 'fr'
+when@test:
+    twig:
+        strict_variables: true

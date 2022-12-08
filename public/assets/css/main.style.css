@@ -1,0 +1,119 @@
+:root {
+    --color-white : #f4f6f4;
+    --color-green : #577364;
+    --secondary_color14: #BF746B
+
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: all 250ms ease;
+}
+body{
+    margin : 0;
+    padding: 0;
+}
+
+/* HEADER STARTS*/
+.header_top{
+    padding-bottom: 0px;
+    border : none;
+}
+.header_top .header-logo{
+    width : 150px;
+}
+.header_middle{
+    padding : 0px;
+}
+.main_header {
+    padding: 0px!important;
+}
+.canvas_open a{
+    border : none !important;
+}
+/* HEADER ENDS*/
+
+.form .input-group ul, .my-form-widget ul{
+    color : rgb(187, 20, 20);
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.product_thumb.product_thumb--shop a img {
+    height : 400px;
+    object-fit: cover;
+}
+.button-no-style{
+    padding : 0px;
+    background-color: white;
+    border: none;
+    color : var(--secondary_color14);
+}
+
+.btn--primary {
+    background-color : rgb(187, 20, 20);
+    color : white;
+}
+.btn--primary:hover{
+    background-color : rgb(187, 20, 20);
+    color : white;
+}
+
+/* PAGINATOR */
+.page-item.active .page-link{
+    background-color: var(--secondary_color14);
+    border-color : var(--secondary_color14);
+}
+.page-item .page-link{
+    color: var(--secondary_color14);
+}
+
+.widget_list.widget_filter form input{
+    width : auto !important;
+}
+
+.btn-cta{
+    margin-top : 40px;
+    margin-bottom : 20px;
+
+    font-family: 'Helvetica Neue LT 65 Medium', sans-serif;
+    background-color: #735A57;
+    color : var(--color-white);
+    font-size: 1.15rem;
+    padding : 15px 60px;
+    border-radius: 50px;
+    border : none;
+    box-shadow: 0px 10px 10px #999;
+    transition: all 250ms ease;
+}
+.btn-cta:hover{
+    color : var(--color-white);
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+@media only screen and (max-width: 991px) {
+    .header_top {
+        display: block;
+    }
+}
+.bootstrap-filestyle input[type="text"] {
+    background: transparent !important;
+}
+.bootstrap-filestyle input[type="text"]::placeholder{
+    color:black
+}
+.bootstrap-filestyle label {
+    background: #e9ecef !important;
+    color: black;
+    border: 1px solid #ced4da
+}
+.bootstrap-filestyle label:disabled + input {
+    background: red !important;
+}
+.product-details-tab img {
+    transition: all 0s !important;
+}
+.containerZoom {
+    transition: none !important;
+}

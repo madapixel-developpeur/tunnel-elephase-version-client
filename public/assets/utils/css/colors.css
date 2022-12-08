@@ -1,0 +1,27 @@
+:root {
+    --color-orange: #f2cfab;
+    --color-black: #181818;
+    --color-gray: #313131;
+    --color-white: #fff;
+    --color-light-gray: #E8E8E8;
+  }
+
+.my-bg-orange{
+    background-color: var(--color-orange) !important;
+}
+
+.my-bg-black{
+    background-color: var(--color-black) !important;
+}
+
+.my-bg-gray{
+    background-color: var(--color-gray) !important;
+}
+
+.my-bg-white{
+    background-color: var(--color-white) !important;
+}
+
+.my-bg-light-gray{
+    background-color: var(--color-light-gray) !important;
+}

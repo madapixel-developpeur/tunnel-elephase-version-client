@@ -1,0 +1,68 @@
+#map{
+    height : calc(100vh - 140px);
+    min-height : 500px;
+    width : 100%;
+}
+#map.map--sm{
+    height : 300px;
+    min-height : unset;
+}
+
+
+.signup_btn a{
+    background: #d52121;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 3px 14px;
+    line-height: 30px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    margin-top : 30px;
+}
+.signup_btn a:hover {
+    background: #333;
+    color: #ffffff;
+}
+
+.login_link a {
+    font-size: 12px;
+    font-style: italic;
+    display: inline-block;
+}
+
+.login_link a:hover {
+    color: #d52121;
+}
+
+.link_home_wrap a{
+    font-size: 50px;
+    line-height: 50px;
+    display: inline-block;
+    font-weight: bolder;
+
+}
+
+.link_home_wrap a:hover{
+    color: #d52121;
+}
+.discover-aromaforest-container{
+    display : grid;
+    grid-template-columns: auto 30%;
+}
+.discover-aromaforest-wrap{
+    padding : 50px 30px;
+}
+@media (max-width: 1060px) {
+    .link_home_wrap a{
+        font-size: 35px;
+        line-height: 35px;
+    }
+}
+@media (max-width: 900px) {
+    .discover-aromaforest-container{
+        display : grid;
+        grid-template-columns: 100%;
+    }
+}

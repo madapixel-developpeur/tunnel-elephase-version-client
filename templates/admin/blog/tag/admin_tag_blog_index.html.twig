@@ -1,0 +1,146 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+   <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="{{ path('app_admin_blog_index') }}">Blog</a></li>
+                            <li>Liste des tags</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+        <!--breadcrumbs area end-->
+        <div class="shop_area shop_reverse" style="padding-bottom : 100px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 mt-4">
+                        <!--sidebar widget start-->
+                        <aside class="sidebar_widget">
+                            <div class="widget_inner">
+                                <div class="widget_list widget_filter mb-3">    
+                                    <form action="{{path('app_admin_tag_blog_new')}}" method="get">
+                                        <button type="submit">Créer un nouveau tag</button>
+                                    </form>
+                                </div>
+                                <div>
+                                    <h3 style="text-transform : uppercase; font-size : 18px;">Options de filtre</h3>
+                                    {{ form_start(form, {'attr': {'class': 'filter-form filter-form--vertical', 'id': 'product-filter-form'}}) }}
+                                        <div class="my-form-widget">
+                                            {{form_label(form.nom)}}
+                                            {{form_widget(form.nom,{ 'attr': {'class': 'form-control'} })}}
+                                            {{form_errors(form.nom)}}
+                                        </div>
+                                        
+                                        <div class="my-form-widget">
+                                            {{form_label(form.sort)}}
+                                            {{form_widget(form.sort,{ 'attr': {'class': 'form-control'} })}}
+                                            {{form_errors(form.sort)}}
+                                        </div>
+                                        <div class="my-form-widget">
+                                            {{form_label(form.direction)}}
+                                            {{form_widget(form.direction,{ 'attr': {'class': 'form-control'} })}}
+                                            {{form_errors(form.direction)}}
+                                        </div>
+                                        
+                                        <button class="btn btn-dark mt-2" type="submit">Filtrer</button>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </aside>
+                        <!--sidebar widget end-->
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="block block--bordered block--rounded">
+                            <div class="block__header mb-1" >
+                                <h1 class="display-6" style="font-size : 20px;">Liste des tags :</h1>
+                                
+                            </div>
+                            {% for message in app.flashes('success') %}
+                                <div class="alert alert-success p-3 text-center" role="alert">
+                                    <div class="alert-body">
+                                        {{message}}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% if error != null %}
+                                    <div class="alert alert-danger p-3 text-center" role="alert">
+                                        <div class="alert-body">
+                                            {{error}}
+                                        </div>
+                                    </div>
+                            {% endif %}
+                            {% if tagList|length ==0 and error == null %}
+                                    <div class="alert alert-primary p-3 text-center" role="alert">
+                                        <div class="alert-body">
+                                            Aucun tag trouvé.
+                                        </div>
+                                    </div>
+                            {% endif %}
+                            {% if tagList|length !=0 %}
+                            <div class="table-responsive mb-1">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for tag in tagList %}
+                                        <tr>
+                                            <td>{{tag.id}}</td>
+                                            <td>{{tag.nom}}</td>                                            
+                                            <td class="col-action ">
+                                                <a href="{{path('app_admin_tag_blog_edit', {'id': tag.id})}}">
+                                                    Modifier
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td class="col-action ">
+                                                <a href="{{path('app_admin_tag_blog_delete', {'id': tag.id})}}">
+                                                    Supprimer
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-center scale-up-center">
+                                {{ knp_pagination_render(tagList) }}
+                            <div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+    
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

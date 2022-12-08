@@ -1,0 +1,196 @@
+@media (max-width: 700px) {
+    .section .section-header{
+        background-color: #fff;  
+        font-family: 'Helvetica Neue LT 95 Black', sans-serif;
+        text-align: center;
+        padding : 40px 20px;
+        background-size: contain;
+        clear: both;
+    }
+    .header .header-search-wrap{
+        display : none;
+    }
+    .navbar__lg{
+        display : none;
+    }
+    .navbar__sm{
+        display : block;
+    }
+    .navbar .navbar-items{
+        /* gap : 30px; */
+    }
+    .navbar .navbar-item{
+        margin : 0px 10px;
+    }
+    .section-banner .section-banner-tile__left{
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .section-banner .section-banner-tile__left .section-banner-tile-content{
+        margin-right : 0px;
+    }
+    .section-banner .section-banner-1-flacon-1-arbre{
+        width :150px;
+        margin-bottom: 20px;
+    }
+    .section-banner .section-banner-20-annee{
+        width : 300px;
+        margin-bottom: 30px;
+    }
+    .section-banner-cta, .btn-cta{
+        font-size: 1rem;
+        padding : 15px 35px;
+        border-radius: 50px;
+    }
+    .section-banner .section-banner-tile{
+        width : 100%;
+    }
+    .section-banner .section-banner-tile__right{
+        display : none;
+        /* display : flex;
+        align-items: center;
+        justify-content: center; */
+    }
+    .section-banner-aroma-forest{
+        display : block;
+    }
+    .section .section-header-text{
+        font-size : 1.15rem;
+        line-height: 1.15rem;
+        letter-spacing: 2.5px;
+    }
+    .section .section-step .section-step-title{
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+
+        margin-bottom: 7px;
+    }
+    .section .section-step .section-step-description{
+        font-size: 1rem;
+        line-height: 1rem;
+
+    }
+    .section .section-step:not(:first-child)::before{
+        display : none;
+    }
+    .section .section-step .section-step-img{
+        width : 70px;
+    }
+    .section-about-us .section-content{
+        padding : 20px 30px;
+        padding-bottom: 40px;
+    
+    }
+    .section-about-us .section-about-us-img-container{
+        float : none;
+        width : 100%;
+        margin-left : 0px;
+    }
+    .section-about-us .section-about-us-img{
+        margin-left : 10px;
+        margin-bottom : 10px;
+        
+    }
+    .section-about-us h3{
+        font-size: 1.1rem;
+
+    }
+    .section-medias  .swiper {
+        width: 85%;
+        height: 100px;    
+      }
+    .section-medias .swiper .swiper-slide-img{
+        height : 30px;
+      }
+      .section-idols .section-idol-item{
+        grid-template-columns: 100%;
+      }
+    .section-idols .section-idol-item, .section-idols .section-idol-item-content,  .section-idols .section-idol-item-img-container{
+        padding : 10px;
+    }
+    .section-idols .section-idol-item-content{
+        letter-spacing: 1.5px;
+    }
+    .section-idols .section-idol-item-text{
+        font-size: 1rem;
+        line-height: 1rem;
+
+    }
+    .section-idols .section-idol-item-title{
+        font-size: 1.1rem;
+    }
+    .section-products-category-title-img{
+        width : 250px;
+    }
+    .section-products-item-img{
+        height : auto;
+        width : 100%;
+    }
+    .section-products-item-title{
+        font-size : 1rem;
+        line-height : 1rem;
+
+    }
+
+    .section-contact{
+        /* gap : 30px; */
+        padding : 30px 20px;
+    }
+    .section-contact-item{
+        /* gap : 15px; */
+        margin : 10px 15px;
+    }
+    .section-contact-item-icon-wrap{
+        width : 40px;
+        height : 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border : #eee 1px solid;
+        border-radius: 100%;
+    }
+    .section-contact-item .section-contact-item-infos{
+        margin : 5px 10px;
+    }
+    .section-contact-item-infos-value{
+        font-size: 0.8rem;
+    }
+    .section-contact-item-infos-title{
+        font-size: 0.6rem;
+        margin-top : 7px;
+    }
+    .section-products-item-img-container {
+        height : auto;
+    }
+    .footer {
+        padding : 30px 40px;
+        grid-template-columns: 100%;
+
+    }
+    .footer .footer-tile-section-title{
+        font-size: 0.7rem;
+        margin-bottom: 5px;
+    }
+    .footer .footer-tile-section-list-item{
+        padding : 5px 0px;
+        font-size: 0.6rem;
+    }
+    .footer .footer-tile-title{
+        font-size: 1.15rem;
+        margin : 0px;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+    .footer .footer-tile-text{
+        font-size: 0.6rem;
+    }
+    .footer .footer-tile-input{
+        font-size : 0.8rem;
+    }
+    .footer .footer-tile--right{
+        padding-top : 40px;
+        padding-bottom : 40px;
+
+    }
+  }

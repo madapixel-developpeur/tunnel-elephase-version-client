@@ -1,0 +1,110 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .img_blog_detail{
+            object-fit: cover;
+            height: 295px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+   <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="{{ path('app_admin_blog_index') }}">Blog</a></li>
+                            <li>Détails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--product details start-->
+    <div class="product_details mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5">
+                    <div class="product-details-tab">
+                        <div id="img-1" class="zoomWrapper single-zoom">
+                            <a href="#" style="width : 100%; display : flex; justify-content : center;">
+                                <img class="img_blog_detail" id="zoom1" src="{{ asset( files_directory_relative ~ blog.image) }}"
+                                    data-zoom-image="{{ asset( files_directory_relative ~ blog.image) }}" alt="Aromaforest, {{blog.titre}}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success p-3 text-center" role="alert">
+                            <div class="alert-body">
+                                {{message}}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="product_d_right">
+                        
+                            <div class="productd_title_nav">
+                                <h1><a href="#">{{blog.titre}}</a></h1>
+                            </div>
+                            {# <div class="price_box">
+                                <span class="current_price">{{blog.cost|format_currency('EUR')}}</span>
+                                <span class="old_price"></span>
+                            </div> #}
+                            <div class="product_meta">
+                                <span>Déscription: <a href="#">{{blog.description}}</a></span>
+                            </div>
+                            <div class="product_meta">
+                                <span>Categorie: <a href="#">{{blog.categorie.nom}}</a></span>
+                            </div>
+                            <div class="product_meta">
+                                <span>Tags: <a href="#">{{blog.concatTags}}</a></span>
+                            </div>
+                            <div class="product_meta">
+                                <span>Auteur: <a href="#">{{blog.nomAuteur}}</a></span>
+                            </div>
+                            <div class="product_meta">
+                                <span>Date de publication: {{blog.datePublication | date('d/m/Y H:i')}}</span>
+                            </div>
+                            <div class="product_desc">
+                                {% if blog.contenu %}
+                                    {{blog.contenu | raw}}
+                                {% else %}
+                                    <p>Pas de contenu</p>
+                                {% endif %}
+                            </div>
+                            <div class="product_variant quantity">
+                                 <form action="{{path('app_admin_blog_delete', {'id': blog.id})}}" method="POST">
+                                    <button class="button" type="submit" style="margin:0; background-color : #d52121; min-width : 0px; padding : 0px 10px;">Supprimer</button>
+                                </form>
+                                <form action="{{path('app_admin_blog_edit', {'id': blog.id})}}" method="GET">
+                                    <button class="button" type="submit" style="margin-left:10px; background-color : #777; min-width : 0px; padding : 0px 10px;">Modifier</button>
+                                </form>
+                            </div>
+                            
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--product details end-->
+    
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

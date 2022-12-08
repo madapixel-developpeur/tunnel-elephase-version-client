@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    - Inscription
+{% endblock %}
+
+{% block body %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Connexion</a></li>
+                        <li>Inscription</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- customer login start -->
+<div class="customer_login">
+    <div class="container">
+        <div class="row">
+            <!--login area start-->
+            <div class="col-md-2 col-0">
+            </div>
+            <div class="col-lg-8 col-12">
+                <div class="account_form">
+                    <h2>Inscription</h2>
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{label}}">{{ message | raw }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                    {{form_start(form)}}
+                        <div class="row">
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.nom)}}
+                            {{form_widget(form.nom)}}
+                            {{form_errors(form.nom)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                           {{form_label(form.prenom)}}
+                            {{form_widget(form.prenom)}}
+                            {{form_errors(form.prenom)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.nomUtilisateur)}}
+                            {{form_widget(form.nomUtilisateur)}}
+                            {{form_errors(form.nomUtilisateur)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.mail)}}
+                            {{form_widget(form.mail)}}
+                            {{form_errors(form.mail)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.numTel)}}
+                            {{form_widget(form.numTel)}}
+                            {{form_errors(form.numTel)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.adresse)}}
+                            {{form_widget(form.adresse)}}
+                            {{form_errors(form.adresse)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.plainPassword.first)}}
+                            {{form_widget(form.plainPassword.first)}}
+                            {{form_errors(form.plainPassword.first)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.plainPassword.second)}}
+                            {{form_widget(form.plainPassword.second)}}
+                            {{form_errors(form.plainPassword.second)}}
+                        </p>
+                        </div>
+                        <div class="col-12">
+                        <p>
+                            {{form_label(form.captcha)}}<br />
+                            {{form_widget(form.captcha)}}
+                            {{form_errors(form.captcha)}}
+                        </p>
+                        </div>
+                        </div>
+                        <div class="login_submit">
+                            <a href="{{ path('app_auth_login') }}">Vous avez déjà un compte ?</a>
+                            <button type="submit">S'inscrire</button>
+                        </div>
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <div class="col-md-2 col-0">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- customer login end -->
+{% endblock %}

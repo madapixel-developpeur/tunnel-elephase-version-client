@@ -1,0 +1,115 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Formulaire inventaire{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% form_theme form '/admin/stock/partials/theme_inventaire_form.html.twig' %}
+{% block body %}
+   <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li>Formulaire inventaire</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <div class="container pb-5">
+        <div class="block block--bordered block--rounded">
+            <h1 class="block__text block__text--center mt-2" >Formulaire inventaire :</h1>
+
+                {{ form_start(form, {'attr': {'class': 'my-form'}}) }}
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{label}}" role="alert">
+                                <div class="alert-body">
+                                    {{message}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.dateInventaire)}}
+                        {{form_widget(form.dateInventaire,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.dateInventaire)}}
+                    </div>
+                    <div class="my-form-widget form-group">
+                        {{form_label(form.description)}}
+                        {{form_widget(form.description,{ 'attr': {'class': 'form-control'} })}}
+                        {{form_errors(form.description)}}
+                    </div>
+                    
+                    <div class="table-responsive mb-1" >
+                        {{ form_errors(form.inventaireFilles) }}
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Quantité</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="row-list">
+                                {{form_widget(form.inventaireFilles)}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <div class="btn-wrap mx-2">
+                            <button class="btn btn-success add-another-collection-widget" type="button"
+                                id="add-row" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Nouvelle ligne</button>
+                        </div>
+                        <div class="btn-wrap">
+                            <button class="btn btn--primary" type="submit"><i data-feather="save"></i>{{ isEdit ? 'Enregistrer les modifications' : 'Créer' }}</button>
+                        </div>
+                    </div>    
+                {{ form_end(form) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            function handleDeleteRowBtn(btn){
+                $(btn).click(function (){
+                    let rowId = $(this)[0].dataset.rowId;
+                    console.log(rowId);
+                    $('#inventaire_mere_form_inventaireFilles_'+rowId+'_statut').val('0');
+                    $('#block_'+rowId).remove();
+                });
+                
+            }
+
+            $('#add-row').click(function(){
+                const index = +$('#widgets-counter').val();
+                let tmpl = $('#inventaire_mere_form_inventaireFilles').data('prototype').replace(/__name__/g, index);
+                tmpl = tmpl.substring(tmpl.indexOf('<tr'));
+                tmpl = tmpl.substring(0, tmpl.indexOf('</tr>')+6);
+                let newRow = $(tmpl);
+                handleDeleteRowBtn(newRow.find('.delete-row'));
+                $('#row-list').append(newRow);
+                $('#widgets-counter').val(index + 1);
+                
+            });
+
+            $('.delete-row').each(function (){
+                handleDeleteRowBtn(this);
+            });
+        });
+    </script>
+{% endblock %}

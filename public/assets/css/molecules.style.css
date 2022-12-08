@@ -1,0 +1,136 @@
+/**
+* Blocks :
+*/
+.block{
+	background-color: #fff;
+	padding : 20px;
+	margin-bottom: 10px;
+	position : relative;
+}
+.block--rounded{
+	border-radius: 10px;
+}
+.block--bordered{
+	box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+}
+
+.block__title{
+	font-size: 1.25rem;
+	text-transform: uppercase;
+}
+.block__text{
+	text-transform: uppercase;
+	font-size: 1rem;
+}
+.block__text--center{
+	text-align: center;
+}
+.block .table{
+	margin-bottom: 5px;
+}
+
+.block .fab-btn-wrap .btn--rounded{
+	border-radius: 50px;
+	padding : 7px 15px;
+}
+.block .block__header{
+	
+	margin-top :10px;
+	display : flex;
+	justify-content: space-between;
+}
+
+
+.filter-form{
+	display : flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-end;
+	gap : 10px;
+	padding-bottom: 20px;
+	
+}
+.filter-form--vertical{
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+.filter-form .btn-wrap{
+	display : flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.filter-form .form-select, .filter-form .my-form-widget{
+	min-width: 250px;
+	width : 100%;
+}
+
+
+
+.my-form{
+	gap : 10px;
+	padding-bottom: 20px;
+	max-width: 600px;
+	margin : 0 auto;
+}
+.my-form .my-form-widget{
+	margin-bottom: 10px;
+}
+.my-form textarea.form-control{
+	min-height : 200px;
+}
+.my-form .btn-wrap{
+	display : flex;
+	justify-content: flex-end;
+}
+.my-form .my-form-img-preview{
+	max-height : 100px;
+	border : 1px solid #DDD;
+	border-radius: 10px;
+}
+
+
+/**
+* FOOTER
+*/
+.footer-aromaforest{
+	padding : 30px;
+	background-color: var(--color-green);
+	color : #fff;
+	
+}
+.footer-aromaforest .footer-logo-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.footer-aromaforest .footer-logo{
+	width : 200px;
+}
+.footer-aromaforest .footer-actions{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top : 20px;
+}
+.footer-aromaforest .footer-action-item{
+	text-align: center;
+	padding : 0px 10px;
+	position : relative;
+	opacity : 0.7;
+}
+.footer-aromaforest .footer-action-item:not(:first-child){
+	border-left: 1px solid #fff;
+}
+
+.footer-aromaforest .footer-action-item:hover{
+	cursor : pointer;
+	/* transform: translateY(-2px); */
+	opacity : 1;
+}
+.footer-aromaforest .footer-action-item a:hover {
+	color : #fff;
+}
+.table-responsive table tbody tr td{
+	min-width : 0px;
+}

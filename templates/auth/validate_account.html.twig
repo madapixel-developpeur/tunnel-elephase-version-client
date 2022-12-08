@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    - Validation du compte
+{% endblock %}
+
+{% block body %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Inscription</a></li>
+                        <li>Validation du compte</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- customer login start -->
+<div class="customer_login">
+    <div class="container">
+        <div class="row">
+            <!--login area start-->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form">
+                    <h2>Validation du compte</h2>
+                    <p>Entrer ci-dessous le code de vérification envoyé à votre email pour activer votre compte</p>
+                   
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{label}}">{{ message | raw }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                    {{form_start(form, {'attr': {'class': 'form'}})}}
+                        <p>
+                            {{form_label(form.verifCode)}}
+                            {{form_widget(form.verifCode)}}
+                            {{form_errors(form.verifCode)}}
+                        </p>
+                       
+                        <div class="login_submit">
+                            <a href="{{path('app_auth_resend_verifcode')}}" >Renvoyer le code</a>
+                            <button type="submit">Vérifier</button>
+
+                        </div>
+
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <!--login area start-->
+
+        </div>
+    </div>
+</div>
+<!-- customer login end -->
+{% endblock %}

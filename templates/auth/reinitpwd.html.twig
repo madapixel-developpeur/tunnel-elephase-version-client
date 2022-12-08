@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    - Réinitilisation du mot de passe
+{% endblock %}
+
+{% block body %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Connexion</a></li>
+                        <li><a href="#">Mot de passe oublié</a></li>
+                        <li>Réinitilisation du mot de passe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- customer login start -->
+<div class="customer_login">
+    <div class="container">
+        <div class="row">
+            <!--login area start-->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form">
+                    <h3>Réinitilisation du mot de passe</h3>
+                    <p class="mt-3">Entrer ci-dessous le code de vérification envoyé à votre email et le nouveau mot de passe.</p>
+                            
+                    
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{label}}">{{ message | raw }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                    {{form_start(form)}}
+                        <div class="row">
+                        <div class="col-12">
+                        <p>
+                            {{form_label(form.verifCode)}}
+                            {{form_widget(form.verifCode)}}
+                            {{form_errors(form.verifCode)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                           {{form_label(form.newPassword.first)}}
+                            {{form_widget(form.newPassword.first)}}
+                            {{form_errors(form.newPassword.first)}}
+                        </p>
+                        </div>
+                        <div class="col-md-6 col-12">
+                        <p>
+                            {{form_label(form.newPassword.second)}}
+                            {{form_widget(form.newPassword.second)}}
+                            {{form_errors(form.newPassword.second)}}
+                        </p>
+                        </div>
+                        </div>
+                        <div class="login_submit">
+                            <button type="submit">Réinitialiser</button>
+                        </div>
+                    {{form_end(form)}}
+                </div>
+            </div>
+            <!--login area start-->
+
+        </div>
+    </div>
+</div>
+<!-- customer login end -->
+{% endblock %}
