@@ -10,6 +10,11 @@
     background-color: var(--color-orange) !important;
 }
 
+.my-bg-elephant{
+    background-image: url('/assets/img/home/elephant.jpg');
+    background-size: cover;
+}
+
 .my-bg-black{
     background-color: var(--color-black) !important;
 }
