@@ -54,12 +54,17 @@ footer .kleanity-copyright-wrapper .kleanity-copyright-text a{
     color: white ;
 
 }
-
+.popover {
+    max-width:500px
+}
 @media only screen and (max-width: 600px) {
  #coffret-img {
      height: 61vh !important;
  }
     .p-fs-mobile {
         font-size:22px !important;
+    }
+    .popover {
+        max-width:350px
     }
 }

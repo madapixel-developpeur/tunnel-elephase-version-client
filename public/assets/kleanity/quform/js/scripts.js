@@ -1,5 +1,7 @@
+const $ = jQuery.noConflict()
 jQuery(document).ready(function($) {
 	$('form.quform').Quform();
+	$('[data-toggle="popover"]').popover()
 
 	// Tooltip settings
 	if ($.isFunction($.fn.qtip)) {

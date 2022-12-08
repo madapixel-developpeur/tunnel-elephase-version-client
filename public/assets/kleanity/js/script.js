@@ -3,7 +3,7 @@
 
 var $ = jQuery.noConflict();
 
-$(document).on('ready',function($) {
+$(document).on('ready',function() {
 	"use strict";
 
 
