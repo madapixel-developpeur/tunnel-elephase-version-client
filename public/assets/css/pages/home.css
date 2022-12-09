@@ -1,5 +1,5 @@
 .gdlr-core-personnel-item .gdlr-core-personnel-list .gdlr-core-personnel-list-image img{
-    object-fit: contain;
+    object-fit: fill;
     height: 220px;
     object-position: 50% bottom;
 }
@@ -10,4 +10,16 @@
     margin-top: 20px!important; 
     max-width: 61px!important;
     min-width: 50px!important;
+}
+
+
+#kleanity-page-wrapper .gdlr-core-pbf-wrapper{
+    padding: 170px 0px 150px 0px;
+    color: #fff;
+}
+@media (max-width: 999px) {
+    #kleanity-page-wrapper .gdlr-core-pbf-wrapper{
+        padding: 35px 0;
+        color: #fff;
+    }   
 }

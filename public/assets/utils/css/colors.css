@@ -13,6 +13,10 @@
 .my-bg-elephant{
     background-image: url('/assets/img/home/elephant.jpg');
     background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 .my-bg-black{
