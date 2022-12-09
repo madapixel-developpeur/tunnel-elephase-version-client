@@ -19,12 +19,12 @@
 
 #kleanity-page-wrapper .gdlr-core-pbf-wrapper{
     padding: 170px 0px 150px 0px;
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 @media (max-width: 999px) {
     #kleanity-page-wrapper .gdlr-core-pbf-wrapper{
         padding: 35px 0;
-        color: #fff;
+        color: rgb(0, 0, 0);
     }   
 }
 
