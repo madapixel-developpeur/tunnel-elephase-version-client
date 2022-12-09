@@ -5,9 +5,9 @@
                 <div class="col-md-4">
                     <div class="kleanity-footer-column kleanity-item-pdlr ">
                         <div id="recent-posts-3" class="widget widget_recent_entries kleanity-widget">
-                            <h3 class="kleanity-widget-title"><span class="kleanity-widget-head-text">S’INSCRIRE À LA NEWSLETTER</span><span class="kleanity-widget-head-divider"></span></h3><span class="clear"></span>
+                            {# <h3 class="kleanity-widget-title"><span class="kleanity-widget-head-text">S’INSCRIRE À LA NEWSLETTER</span><span class="kleanity-widget-head-divider"></span></h3><span class="clear"></span>
                             <input type="email" class="form-control" placeholder="Email">
-                            <button class="btn btn-secondary btn-sm my-3">S'abonner</button>
+                            <button class="btn btn-secondary btn-sm my-3">S'abonner</button> #}
                             <div class="footer-social-net mt-4">
                                 <h3>RÉSEAUX SOCIAUX</h3>
                                 <div >
@@ -46,7 +46,7 @@
                             
 
                             <h3 class="kleanity-widget-title mt-5"><span class="kleanity-widget-head-text">MOYENS DE PAIEMENTS</span><span class="kleanity-widget-head-divider"></span></h3><span class="clear"></span>
-                            <img src="assets\img\stripe-icon.ico" width="20" alt="footer-payment-method">
+                            <img src="{{ asset('/assets/img/stripe-icon.ico') }}"  width="20" alt="footer-payment-method">
                         </div>        
                     </div>
                 </div>
