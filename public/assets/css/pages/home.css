@@ -28,3 +28,18 @@
     }   
 }
 
+/* ipad mini, air, pro */
+@media all and
+(device-width: 1024px) and (device-height: 1366px) and (orientation:portrait),
+(max-width: 1208px)
+{
+    .gdlr-core-ipad-column {
+        clear: both !important;
+        width:100%
+    }
+
+    .gdlr-core-ipad-column-first {
+        width: 100% !important
+    }
+}
+
