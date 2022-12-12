@@ -3428,7 +3428,7 @@
 .social_youtube,
 .social_youtube_circle,
 .social_youtube_square {
-    font-family: ElegantIcons;
+    font-family: ElegantIcons !important;
     speak: none;
     font-style: normal;
     font-weight: 400;
