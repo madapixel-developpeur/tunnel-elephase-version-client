@@ -4,7 +4,6 @@
 
 .gdlr-core-personnel-item .gdlr-core-personnel-list .gdlr-core-personnel-list-image img{
     object-fit: fill;
-    height: 220px;
     object-position: 50% bottom;
 }
 
