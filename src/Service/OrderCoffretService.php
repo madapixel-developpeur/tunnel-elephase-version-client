@@ -7,6 +7,7 @@ use App\Repository\OrderCoffretRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Nucleos\DompdfBundle\Wrapper\DompdfWrapperInterface;
 
 class OrderCoffretService
 {
@@ -14,15 +15,21 @@ class OrderCoffretService
     private $stripeService;
     private $coffretRepository;
     private OrderCoffretRepository $orderCoffretRepository;
+    private $mailService;
+    private $wrapper;
+    private $fileHandler;
 
 
-    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository)
+    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository, MailService $mailService, DompdfWrapperInterface $wrapper, FileHandler $fileHandler)
     {
         $this->entityManager = $entityManager;
         $this->stripeService = $stripeService;
         $this->coffretRepository = $coffretRepository;
 
         $this->orderCoffretRepository = $orderCoffretRepository;
+        $this->mailService = $mailService;
+        $this->wrapper = $wrapper;
+        $this->fileHandler = $fileHandler;
     }
 
     
@@ -52,6 +59,10 @@ class OrderCoffretService
 
             $this->entityManager->flush();
             $this->entityManager->commit();
+            try{
+                $this->saveInvoice($order);
+                $this->sendFacture($order);
+            } catch(Exception $ex) {}
             return $order;
         } 
         catch(\Exception $ex){
@@ -75,4 +86,28 @@ class OrderCoffretService
         $this->entityManager->flush();
     }
     
+    public function saveInvoice(OrderCoffret $order){
+        $html = $this->mailService->renderTwig('pdf/facture.html.twig', [
+            'order' => $order
+        ]);
+        $binary = $this->wrapper->getPdf($html, ['isRemoteEnabled' => true, 'isHtml5ParserEnabled'=>true, 'defaultFont'=> 'Arial']);
+        $invoicePath = $this->fileHandler->saveBinary($binary, "Facture Elephas-Commande n°".$order->getId()." du ".date('Y-m-d-H-i-s').'.pdf', 'factures');
+        $order->setInvoicePath($invoicePath);
+        $this->entityManager->persist($order);
+        $this->entityManager->flush();
+    }
+
+    public function sendFacture(OrderCoffret $order){
+        $body = $this->mailService->renderTwig('emails/commande.html.twig', [
+            'order' => $order
+        ]);
+        $mail = [
+            'body' => $body,
+            'subject' => 'Commande n°'.$order->getId().' chez Elephas',
+            'to' => $order->getInfo()->getEmail(),
+        ];
+        $attachmentsPath = [$order->getInvoicePath()];
+        $this->mailService->sendMail($mail, $attachmentsPath);
+
+    }
 }

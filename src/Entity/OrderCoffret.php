@@ -53,6 +53,9 @@ class OrderCoffret
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $orderDate = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $invoicePath = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,5 +162,16 @@ class OrderCoffret
         return $this;
     }
 
+    public function getInvoicePath(): ?string
+    {
+        return $this->invoicePath;
+    }
+
+    public function setInvoicePath(?string $invoicePath): self
+    {
+        $this->invoicePath = $invoicePath;
+
+        return $this;
+    }
     
 }
