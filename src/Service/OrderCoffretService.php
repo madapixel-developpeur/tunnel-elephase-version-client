@@ -107,7 +107,8 @@ class OrderCoffretService
             'to' => $order->getInfo()->getEmail(),
         ];
         $attachmentsPath = [$order->getInvoicePath()];
-        $this->mailService->sendMail($mail, $attachmentsPath);
+        $embeddedImages = ['logo' => 'assets/utils/images/logo.png'];
+        $this->mailService->sendMail($mail, $attachmentsPath, null, $embeddedImages);
 
     }
 }

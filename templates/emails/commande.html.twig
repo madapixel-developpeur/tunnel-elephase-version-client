@@ -11,11 +11,15 @@
 </head>
 <body>
     <div>
-        Bonjour M/Mme {{ order.info.prenom }} {{ order.info.nom }},<br><br>
-        Retrouvez ci-joint la facture de votre commande.<br><br>
-        La référence de la commande est : <strong>Commande n°{{order.id}}</strong>.
-        <br>
-        Cordialement
+        Bonjour {{ order.info.prenom }},<br><br>
+        Nous vous remercions pour votre confiance.<br>
+        Celle-ci sera traitée dans les meilleurs délais et sera présentée à l’adresse de livraison indiquée.<br>
+        A bientôt sur Elephas.<br><br>
+        {# Olivier Behra<br>
+        Fondateur d'Elephas #}
+    </div>
+    <div>
+        <img src="cid:logo" />
     </div>
 </p>
 

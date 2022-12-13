@@ -26,7 +26,7 @@ class MailService{
     }
 
     
-    public function sendMail(array $mail, array $attachmentsPath = [], ?string $to = null)
+    public function sendMail(array $mail, array $attachmentsPath = [], ?string $to = null, array $embeddedImages = [])
     {
         $email = (new Email())
             ->from(new Address($this->mailerSendFrom, $this->mailerSendFromName))
@@ -42,6 +42,9 @@ class MailService{
 
         foreach($attachmentsPath as $path){
             $email->attachFromPath($this->parameterBag->get('kernel.project_dir')."/public/files/".$path);
+        }
+        foreach($embeddedImages as $key => $value){
+            $email->embedFromPath($this->parameterBag->get('kernel.project_dir')."/public/".$value, $key);
         }
         $this->mailer->send($email);
     }
