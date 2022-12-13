@@ -152,6 +152,9 @@
                 width : 100%;
             }
             
+            .text-right{
+                text-align: right;
+            }
     </style>
 </head>
 <body>
@@ -205,7 +208,7 @@
                 </div>
                 <div class="grid-panel">
                         <h2>Elephas</h2>
-                        <p>84 rue Bobillot 75013 Paris</p>
+                        <p>Elephas – 9 Rue Montbrun 5014 Paris </p>
                 </div> 
             </div>
         </div>
@@ -260,8 +263,8 @@
                             <p>{{order.coffret.nom}}</p>
                             <small>Prix unitaire : {{order.prixCoffret|format_currency('EUR')}}</small>
                         </td>
-                        <td>{{order.qteCoffret}}</td>
-                        <td>{{order.montant|format_currency('EUR')}}</td>
+                        <td class="text-right">{{order.qteCoffret}}</td>
+                        <td class="text-right">{{order.montant|format_currency('EUR')}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -273,25 +276,25 @@
                     <table class="table table--md table--borderless">
                         <tr>
                             <th>Sous-total</th>
-                            <td>{{order.montant|format_currency('EUR')}}</td>
+                            <td class="text-right">{{order.montant|format_currency('EUR')}}</td>
                         </tr>
                         <tr>
                             <th>Expédition</th>
-                            <td>{{0.00|format_currency('EUR')}}</td>
+                            <td class="text-right">{{0.00|format_currency('EUR')}}</td>
                         </tr>
                         <tr class="row-bordered-black">
                             <th>Total</th>
-                            <td>{{order.montant|format_currency('EUR')}}</td>
+                            <td class="text-right">{{order.montant|format_currency('EUR')}}</td>
                         </tr>
                     </table>
                 </div> 
             </div>
         </div>
         <footer>
-            <p>Elephas – 84 rue Bobillot 75013 Paris </p>
-            <br>
+            <p>Elephas – 9 Rue Montbrun 5014 Paris </p>
+            {# <br>
             <p>NUMÉRO SIREN 902 175 173 - DATE D'IMMATRICULATION AU RCS 10/08/2021 -
-            Société par actions simplifiée au capital de 1000 euros – TVA INTRACOMMUNAUTAIRE FR06902175173 – SIRET 902 175 173 000 19</p>
+            Société par actions simplifiée au capital de 1000 euros – TVA INTRACOMMUNAUTAIRE FR06902175173 – SIRET 902 175 173 000 19</p> #}
         </footer>
     </page>
 
