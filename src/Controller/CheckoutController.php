@@ -7,6 +7,7 @@ use App\Entity\OrderCoffret;
 use App\Form\OrderCoffretFormType;
 use App\Repository\CoffretRepository;
 use App\Service\OrderCoffretService;
+use App\Service\ConfigService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,8 +31,9 @@ class CheckoutController extends AbstractController
 
 
     #[Route(path: '/', name: 'app_checkout')]
-    public function index(Request $request): Response
+    public function index(Request $request, ConfigService $configService): Response
     {
+        $configTva = $configService->findTva();
         $payment = true;
         $coffret = $this->coffretRepository->findCoffret();
         $order = new OrderCoffret();
@@ -56,7 +58,8 @@ class CheckoutController extends AbstractController
             'form' => $form->createView(),
             'order' => $order,
             'coffret' => $coffret,
-            'payment' => $payment
+            'payment' => $payment,
+            'configTva' => $configTva
         ]);
         
     }

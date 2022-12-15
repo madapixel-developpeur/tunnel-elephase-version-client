@@ -12,3 +12,8 @@ VALUES(3, 'redacteur', '["ROLE_REDACTEUR"]', '$2y$13$ExUnl3C.9o.rrkGOCaGiO.uvkK8
 INSERT INTO coffret
 (id, nom, description, prix, image, statut)
 VALUES(1, 'Coffret', NULL, 89.00, 'coffret/coffret.png', 1);
+
+## Tva
+INSERT INTO config
+(id, nom, val, num, statut)
+VALUES(1, 'TVA', 20.0, 1, 1);

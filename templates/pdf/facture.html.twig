@@ -282,8 +282,16 @@
                             <th>Expédition</th>
                             <td class="text-right">{{0.00|format_currency('EUR')}}</td>
                         </tr>
+                        <tr>
+                            <th>Prix net (sans TVA)</th>
+                            <td class="text-right">{{order.montantHt|format_currency('EUR')}}</td>
+                        </tr>
+                        <tr>
+                            <th>TVA ({{order.tva | number_format(0, ',', ' ')}} %)</th>
+                            <td class="text-right">{{order.montantTva|format_currency('EUR')}}</td>
+                        </tr>
                         <tr class="row-bordered-black">
-                            <th>Total</th>
+                            <th>Prix total (TVA incluse)</th>
                             <td class="text-right">{{order.montant|format_currency('EUR')}}</td>
                         </tr>
                     </table>

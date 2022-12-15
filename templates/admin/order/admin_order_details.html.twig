@@ -102,8 +102,17 @@
                                             <th>Frais de livraison</th>
                                             <td><strong>0.00 €</strong></td>
                                         </tr>
+
                                         <tr class="order_total">
-                                            <th>Total</th>
+                                            <th>Prix net (sans TVA)</th>
+                                            <td><strong>{{order.montantHt|format_currency('EUR')}}</strong></td>
+                                        </tr>
+                                        <tr class="order_total">
+                                            <th>TVA ({{order.tva | number_format(0, ',', ' ')}} %)</th>
+                                            <td><strong>{{order.montantTva|format_currency('EUR')}}</strong></td>
+                                        </tr>
+                                        <tr class="order_total">
+                                            <th>Prix total (TVA incluse)</th>
                                             <td><strong>{{order.montant|format_currency('EUR')}}</strong></td>
                                         </tr>
                                     </tfoot>

@@ -56,6 +56,9 @@ class OrderCoffret
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $invoicePath = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $tva = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -173,5 +176,24 @@ class OrderCoffret
 
         return $this;
     }
+
+    public function getTva(): ?float
+    {
+        return $this->tva ?? 20.;
+    }
+
+    public function setTva(?float $tva): self
+    {
+        $this->tva = $tva;
+
+        return $this;
+    }
     
+    public function getMontantTva(){
+        return $this->getMontant() * $this->getTva() / (100 + $this->getTva());
+    }
+
+    public function getMontantHt(){
+        return $this->getMontant() / (1. + $this->getTva()/100);
+    }
 }

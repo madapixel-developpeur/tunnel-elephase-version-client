@@ -18,9 +18,10 @@ class OrderCoffretService
     private $mailService;
     private $wrapper;
     private $fileHandler;
+    private $configService;
 
 
-    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository, MailService $mailService, DompdfWrapperInterface $wrapper, FileHandler $fileHandler)
+    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository, MailService $mailService, DompdfWrapperInterface $wrapper, FileHandler $fileHandler, ConfigService $configService)
     {
         $this->entityManager = $entityManager;
         $this->stripeService = $stripeService;
@@ -30,6 +31,7 @@ class OrderCoffretService
         $this->mailService = $mailService;
         $this->wrapper = $wrapper;
         $this->fileHandler = $fileHandler;
+        $this->configService = $configService;
     }
 
     
@@ -38,7 +40,7 @@ class OrderCoffretService
         try{
             $this->entityManager->beginTransaction();
 
-
+            $order->setTva($this->configService->findTva());
             $order->setCoffret($this->coffretRepository->findCoffret());
             $order->setPrixCoffret($order->getCoffret()->getPrix());
             $order->setMontant($order->getPrixCoffret() * $order->getQteCoffret());
