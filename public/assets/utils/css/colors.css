@@ -11,8 +11,7 @@
 }
 
 .my-bg-elephant{
-    background-image: url('/assets/img/home/elephant2.jpg');
-    background-size: cover;
+    background: url('/assets/img/home/elephant2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
