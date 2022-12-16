@@ -8,6 +8,7 @@ use App\Form\OrderCoffretFormType;
 use App\Repository\CoffretRepository;
 use App\Service\OrderCoffretService;
 use App\Service\ConfigService;
+use App\Service\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,12 +22,14 @@ class CheckoutController extends AbstractController
     private $entityManager;
     private $coffretRepository;
     private $orderCoffretService;
+    private $stripeService;
 
-    public function __construct(EntityManagerInterface $entityManager, CoffretRepository $coffretRepository, OrderCoffretService $orderCoffretService)
+    public function __construct(EntityManagerInterface $entityManager, CoffretRepository $coffretRepository, OrderCoffretService $orderCoffretService, StripeService $stripeService)
     {
         $this->entityManager = $entityManager;
         $this->coffretRepository = $coffretRepository;
         $this->orderCoffretService = $orderCoffretService;
+        $this->stripeService = $stripeService;
     }
 
 
@@ -53,13 +56,18 @@ class CheckoutController extends AbstractController
             }
         }
 
+        $coffretPrice = $coffret->getPrix();
+        $stripeIntentSecret = $this->stripeService->intentSecret($coffretPrice);
+        $stripe_publishable_key = $_ENV['STRIPE_PUBLIC_KEY'];
         
         return $this->render('home/checkout.html.twig',[
             'form' => $form->createView(),
             'order' => $order,
             'coffret' => $coffret,
             'payment' => $payment,
-            'configTva' => $configTva
+            'configTva' => $configTva,
+            'stripeIntentSecret' => $stripeIntentSecret,
+            'stripe_publishable_key' => $stripe_publishable_key,
         ]);
         
     }

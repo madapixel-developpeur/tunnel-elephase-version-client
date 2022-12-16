@@ -36,7 +36,8 @@ class OrderCoffretService
 
     
 
-    public function saveOrder(OrderCoffret $order, string $stripeToken): ?OrderCoffret{
+    // public function saveOrder(OrderCoffret $order, string $stripeToken): ?OrderCoffret{
+    public function saveOrder(OrderCoffret $order, string $stripeToken = null): ?OrderCoffret{
         try{
             $this->entityManager->beginTransaction();
 
@@ -50,14 +51,13 @@ class OrderCoffretService
             $this->entityManager->persist($order->getInfo());
             $this->entityManager->persist($order);
 
-            
-            $chargeId = $this->stripeService
-                ->createCharge(
-                    $stripeToken, 
-                    $order->getMontant(), [
-                        'description' => 'Paiement commande'
-                    ]);
-            $order->setChargeId($chargeId);        
+            // $chargeId = $this->stripeService
+            //     ->createCharge(
+            //         $stripeToken, 
+            //         $order->getMontant(), [
+            //             'description' => 'Paiement commande'
+            //         ]);
+            // $order->setChargeId($chargeId);        
 
             $this->entityManager->flush();
             $this->entityManager->commit();

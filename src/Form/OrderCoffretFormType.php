@@ -35,7 +35,7 @@ class OrderCoffretFormType extends AbstractType
                 ->add('token', HiddenType::class, [
                     'required' => true,
                     'mapped' => false,
-                    'constraints' => [new NotBlank()],
+                    // 'constraints' => [new NotBlank()],
                 ]);
         }
     }

@@ -13,11 +13,13 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class StripeService 
 {
     private $params;
+    private $secretKey;
 
     public function __construct(ParameterBagInterface $params)
     {
         $this->params = $params;
         Stripe::setApiKey($this->params->get('stripe_secret_key'));
+        $this->secretKey = $_ENV['STRIPE_SECRET_KEY'];
     }
 
     public function createCharge($token, $amount, $params): ?string
@@ -29,4 +31,29 @@ class StripeService
         $charge = Charge::create($params);
         return $charge->id;
     }
+
+    /**
+     * @return object
+     */
+    public function paymentIntent($amount)
+    {
+        \Stripe\Stripe::setApiKey($this->secretKey); 
+        
+        $intentStripe = \Stripe\PaymentIntent::create([
+            'amount' => $amount * 100,
+            'currency' =>  'eur',
+            'payment_method_types' =>  ['card']
+        ]);
+
+        return $intentStripe;
+    }
+
+
+    public function intentSecret($amount)
+    {
+        $intent = $this->paymentIntent($amount);
+
+        return $intent['client_secret'] ?? null;
+    }
+
 }
