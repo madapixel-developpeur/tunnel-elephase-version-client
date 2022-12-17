@@ -121,6 +121,14 @@
                                                     </div>
                                                     <div class="gdlr-core-column-60">
                                                         <span class="quform-element wpcf7-form-control-wrap your-name">
+                                                            {{form_label(form.info.codePostal)}}
+                                                            {{form_widget(form.info.codePostal, {attr: {class: 'wpcf7-form-control wpcf7-text my-font-regular'}})}}
+                                                            {{form_errors(form.info.codePostal)}}
+                                                        </span>
+                                                    </div>
+                                                    
+                                                    <div class="gdlr-core-column-60">
+                                                        <span class="quform-element wpcf7-form-control-wrap your-name">
                                                             {{form_label(form.info.provinceDepartement)}}
                                                             {{form_widget(form.info.provinceDepartement, {attr: {class: 'wpcf7-form-control wpcf7-text my-font-regular'}})}}
                                                             {{form_errors(form.info.provinceDepartement)}}

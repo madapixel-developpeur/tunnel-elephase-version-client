@@ -55,6 +55,14 @@ class InfoOrderCoffretFormType extends AbstractType
                     new NotBlank(["message" => "Numéro et nom de rue obligatoires"])
                 ]
             ])
+            ->add('codePostal', TextType::class, [
+                "label" => "Code postal *",
+                "trim" => true,
+                "required" => true,
+                "constraints" => [
+                    new NotBlank(["message" => "Code postal obligatoires"])
+                ]
+            ])
             ->add('lot', TextType::class, [
                 "label" => false,
                 "trim" => true,
