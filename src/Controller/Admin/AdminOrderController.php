@@ -17,8 +17,7 @@ use App\Service\SearchService;
 use App\Util\Search\MyCriteriaParam;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Form\OrderClientFilterType;
-
-
+use App\Service\OrderCoffretService;
 
 #[Route('/admin/order')]
 class AdminOrderController extends AbstractController
@@ -29,6 +28,7 @@ class AdminOrderController extends AbstractController
     private $fileHandler;
     private $basketService;
     private $orderService;
+    private $orderCoffretService;
 
 
     public function __construct(EntityManagerInterface $entityManager, 
@@ -36,15 +36,16 @@ class AdminOrderController extends AbstractController
         OrderRepository $orderRepository,
 //        BasketService $basketService,
         OrderService $orderService,
-        FileHandler $fileHandler)
+        FileHandler $fileHandler,
+        OrderCoffretService $orderCoffretService)
     {
         $this->entityManager = $entityManager;
         $this->productRepository = $productRepository;
         $this->orderRepository = $orderRepository;
 //        $this->basketService = $basketService;
         $this->orderService = $orderService;
-//        $this->fileHandler = $fileHandler;
-
+        //        $this->fileHandler = $fileHandler;
+        $this->orderCoffretService = $orderCoffretService;
     }
 
     #[Route('/', name: 'app_admin_order_index')]

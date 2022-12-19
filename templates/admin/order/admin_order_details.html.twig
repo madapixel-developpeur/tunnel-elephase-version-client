@@ -143,6 +143,7 @@
                                         {% else %}
                                             <button type="button" style="opacity : 0.5;" disabled>Commande déjà validée</button>
                                         {% endif %}
+                                        <a href="/files/{{order.getInvoicePath}}" class="btn btn-success"  download><i class="fa-solid fa-file-arrow-down"></i> Télécharger facture</a>
                                     </div>
                                 </form>
                             </div>
