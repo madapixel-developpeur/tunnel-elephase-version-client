@@ -53,6 +53,8 @@ class OrderCoffretService
             $this->entityManager->persist($order->getInfo());
             $this->entityManager->persist($order);
 
+            $paymentIntent = $this->stripeService->paymentIntent($order->getMontant());
+            $order->setChargeId($paymentIntent->id);
             $this->entityManager->flush();
             $this->entityManager->commit();
             
@@ -69,8 +71,9 @@ class OrderCoffretService
         }
     }
 
-    public function payOrder(OrderCoffret $order, $result){
-        $order->setChargeId($result);
+    public function payOrder(OrderCoffret $order){
+        $paymentIntent = $this->stripeService->getPaymentIntent($order->getChargeId());
+        if($paymentIntent->status != "succeeded") throw new Exception("Erreur rencontrée lors du paiement");
         $order->setStatut(OrderCoffret::PAIED);
         $this->entityManager->persist($order);
         $this->entityManager->flush();

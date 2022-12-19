@@ -7,6 +7,7 @@ use App\Util\GenericUtil;
 use App\Util\Search\MyCriteriaParam;
 use Doctrine\ORM\QueryBuilder;
 use Stripe\Charge;
+use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -35,7 +36,7 @@ class StripeService
     /**
      * @return object
      */
-    public function paymentIntent($amount)
+    public function paymentIntent($amount):?PaymentIntent
     {
         \Stripe\Stripe::setApiKey($this->secretKey); 
         
@@ -49,11 +50,18 @@ class StripeService
     }
 
 
-    public function intentSecret($amount)
+    public function intentSecret($paymentIntentId)
     {
-        $intent = $this->paymentIntent($amount);
+        $intent = $this->getPaymentIntent($paymentIntentId);
 
         return $intent['client_secret'] ?? null;
     }
+
+    
+    public function getPaymentIntent($id)
+    {
+        return \Stripe\PaymentIntent::retrieve($id, []);
+    }
+
 
 }

@@ -76,7 +76,7 @@ class CheckoutController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             try{
                 $stripeToken =  $form->get('token')->getData();
-                $order = $this->orderCoffretService->payOrder($order, $stripeToken);
+                $order = $this->orderCoffretService->payOrder($order);
                 $this->addFlash('success', 'Commande effectuée');
                 return $this->redirectToRoute('app_home');
             } catch(Exception $ex){
@@ -84,7 +84,7 @@ class CheckoutController extends AbstractController
             }
         }
         
-        $stripeIntentSecret = $this->stripeService->intentSecret($order->getMontant());
+        $stripeIntentSecret = $this->stripeService->intentSecret($order->getChargeId());
         return $this->render('home/payment.html.twig',[
             'form' => $form->createView(),
             'order' => $order,
