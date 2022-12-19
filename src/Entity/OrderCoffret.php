@@ -10,16 +10,19 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderCoffret
 {
     public const CREATED = 1;
-    public const VALIDATED = 2;
+    public const PAIED = 2;
+    public const DELIVERED = 3;
 
     public const STATUS = [
         self::CREATED => "Créée",
-        self::VALIDATED => "Acceptée"
+        self::PAIED => "Payée",
+        self::DELIVERED => "Livrée"
     ];
 
     public const STATUS_DATA_FORM = [
         "Créée" => self::CREATED,
-        "Acceptée" => self::VALIDATED
+        "Payée" => self::PAIED,
+        "Livrée" => self::DELIVERED
     ];
     
     #[ORM\Id]

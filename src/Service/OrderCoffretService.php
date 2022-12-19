@@ -39,7 +39,7 @@ class OrderCoffretService
     
 
     // public function saveOrder(OrderCoffret $order, string $stripeToken): ?OrderCoffret{
-    public function saveOrder(OrderCoffret $order, string $stripeToken = null): ?OrderCoffret{
+    public function saveOrder(OrderCoffret $order): ?OrderCoffret{
         try{
             $this->entityManager->beginTransaction();
 
@@ -53,20 +53,9 @@ class OrderCoffretService
             $this->entityManager->persist($order->getInfo());
             $this->entityManager->persist($order);
 
-            // $chargeId = $this->stripeService
-            //     ->createCharge(
-            //         $stripeToken, 
-            //         $order->getMontant(), [
-            //             'description' => 'Paiement commande'
-            //         ]);
-            // $order->setChargeId($chargeId);        
-
             $this->entityManager->flush();
             $this->entityManager->commit();
-            try{
-                $this->saveInvoice($order);
-                $this->sendFacture($order);
-            } catch(Exception $ex) {}
+            
             return $order;
         } 
         catch(\Exception $ex){
@@ -78,6 +67,17 @@ class OrderCoffretService
         finally {
             $this->entityManager->clear();
         }
+    }
+
+    public function payOrder(OrderCoffret $order, $result){
+        $order->setChargeId($result);
+        $order->setStatut(OrderCoffret::PAIED);
+        $this->entityManager->persist($order);
+        $this->entityManager->flush();
+        try{
+            $this->saveInvoice($order);
+            $this->sendFacture($order);
+        } catch(Exception $ex){}
     }
 
     public function changeStatus(int $orderId, int $status)

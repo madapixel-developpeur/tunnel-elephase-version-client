@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    Commande
+    Paiement
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="kleanity-page-title-wrap  kleanity-style-medium kleanity-left-align"><div class="kleanity-header-transparent-substitute" style="height: 0px;"></div><div class="kleanity-page-title-overlay"></div><div class="kleanity-page-title-container kleanity-container"><div class="kleanity-page-title-content kleanity-item-pdlr"><h1 class="kleanity-page-title">Commande</h1></div></div></div>
+<div class="kleanity-page-title-wrap  kleanity-style-medium kleanity-left-align"><div class="kleanity-header-transparent-substitute" style="height: 0px;"></div><div class="kleanity-page-title-overlay"></div><div class="kleanity-page-title-container kleanity-container"><div class="kleanity-page-title-content kleanity-item-pdlr"><h1 class="kleanity-page-title">Paiement</h1></div></div></div>
 <div class="kleanity-page-wrapper my-font-regular" id="kleanity-page-wrapper">
     <div class="gdlr-core-page-builder-body">
         {# <div class="gdlr-core-pbf-wrapper " style="margin: 100px 0px 0px 0px;padding: 200px 0px 150px 0px;" data-skin="Dark">
@@ -33,7 +33,7 @@
             <div class="gdlr-core-pbf-background-wrap" style="background-color: #f5f5f5 ;"></div>
             <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                 <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container ">
-                    {{form_start(form)}}
+                    {{form_start(form, {attr: {id: 'form-payment'}})}}
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
                             <div class="alert alert-{{label}}">{{ message | raw }}</div>
@@ -256,7 +256,7 @@
                                                             <td>
                                                                 <div class="d-flex" style="height:4em !important;">
                                                                     <span class="m-auto">
-                                                                         {{coffret.nom}}
+                                                                         {{order.coffret.nom}}
                                                                     </span>
 
                                                                 </div>
@@ -264,7 +264,7 @@
                                                             <td>
                                                                 <div class="d-flex" style="height:4em !important;">
                                                                    <span class="m-auto">
-                                                                       {{coffret.prix | format_currency(my_currency, {}, locale)}}
+                                                                       {{order.coffret.prix | format_currency(my_currency, {}, locale)}}
                                                                    </span>
                                                                 </div>
 
@@ -272,7 +272,7 @@
                                                             <td class="d-flex">
                                                                 <div class="gdlr-core-column-30 mx-auto d-flex" style="height:4em; margin-bottom:0px !important;">
                                                                     <span class="quform-element wpcf7-form-control-wrap your-name mx-auto">
-                                                                        {{form_widget(form.qteCoffret, {attr: {class: 'wpcf7-form-control wpcf7-text text-center', onchange: 'refreshTotal(this)'}})}}
+                                                                        {{form_widget(form.qteCoffret, {attr: {class: 'wpcf7-form-control wpcf7-text text-center'}})}}
                                                                         {{form_errors(form.qteCoffret)}}
                                                                     </span>
                                                                 </div>
@@ -281,33 +281,65 @@
                                                         
                                                         <tr>
                                                         <td colspan="2" ><span style="font-weight: bold">Prix net (sans TVA)</span></td>
-                                                        <td id="total-amount-ht">{{((coffret.prix * order.qteCoffret) / (1.0 + configTva/100)) | format_currency(my_currency, {}, locale)}}</td>
+                                                        <td id="total-amount-ht">{{order.montantHt | format_currency(my_currency, {}, locale)}}</td>
                                                         </tr>
                                                         <tr>
-                                                        <td colspan="2" ><span style="font-weight: bold">TVA ({{configTva | number_format(0, ',', ' ')}} %)</span></td>
-                                                        <td id="tva-amount">{{((coffret.prix * order.qteCoffret) * configTva / (100 + configTva)) | format_currency(my_currency, {}, locale)}}</td>
+                                                        <td colspan="2" ><span style="font-weight: bold">TVA ({{order.tva | number_format(0, ',', ' ')}} %)</span></td>
+                                                        <td id="tva-amount">{{order.montantTva | format_currency(my_currency, {}, locale)}}</td>
                                                         </tr>
                                                         <tr>
                                                         <td colspan="2" ><span style="font-weight: bold">Prix total (TVA incluse)</span></td>
-                                                        <td id="total-amount">{{(coffret.prix * order.qteCoffret) | format_currency(my_currency, {}, locale)}}</td>
+                                                        <td id="total-amount">{{order.montant | format_currency(my_currency, {}, locale)}}</td>
                                                         </tr>
 
                                                         
                                                     </tbody>
                                                 </table>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>          
+                                </div>
+                                <div class="gdlr-core-pbf-element" style="margin-top: 50px;">
+                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 15px;">
+                                        <div class="gdlr-core-title-item-title-wrap ">
+                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title my-font-regular" style="font-size: 28px;letter-spacing: 0px;text-transform: none;">Paiement<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-divider-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-divider-item-normal">
+                                        <div class="gdlr-core-divider-container gdlr-core-left-align" style="max-width: 40px;">
+                                            <div class="gdlr-core-divider-line gdlr-core-skin-divider" style="border-color: #3a3a3a;border-bottom-width: 2px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gdlr-core-pbf-element" style="margin-top: 20px;">
+                                    <div class="gdlr-core-contact-form-7-item gdlr-core-item-pdlr gdlr-core-item-pdb ">
+                                        <div role="form" class="wpcf7"  lang="en-US" dir="ltr">
+                                            <div class="screen-reader-response"></div>
+                                            {{form_widget(form.token)}}
+                                            <div class="quform-elements gdlr-core-input-wrap gdlr-core-large gdlr-core-full-width gdlr-core-with-column gdlr-core-no-border">
+                                                <div class="gdlr-core-column-60">
+                                                    <span class="quform-element wpcf7-form-control-wrap your-name">
+                                                        <label for="card-element my-font-regular">Carte de crédit</label>
+                                                        <div id="card-element" class="form-control"></div>
+                                                        <div id="card-errors" class="invalid-feedback d-block"></div>
+                                                    </span>
+                                                </div>
                                                 <div class="gdlr-core-column-60">
                                                     <div class="quform-submit">
                                                         <div class="quform-submit-inner">
-                                                            <button type="submit" class="submit-button my-font-regular"><span><em>Commander</em></span></button>
+                                                            <button type="submit" id="btn-pay" class="submit-button"><span><em>Payer</em></span></button>
                                                         </div>
                                                         <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>          
+                                    </div>
                                 </div>
-                                
+                            </div>
 
                         </div>
                     </div>
@@ -328,26 +360,60 @@
     </div>
 </div>
 
+<input type="hidden" id="stripe_clientSecret" value="{{ stripeIntentSecret }}">
+
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    
+    <script src="https://js.stripe.com/v3/"></script>
     <script type="text/javascript">
-        let configTva = {{configTva}};
-        function formatPrix(prix){
-            let text = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(prix);
-            return text;
-        }
-        function refreshTotal(elmt){
-            let totalDom = document.getElementById('total-amount');
-            let tvaDom = document.getElementById('tva-amount');
-            let totalHtDom = document.getElementById('total-amount-ht');
-            let prix = {{coffret.prix}};
-            let qte = elmt.value;
-            let total = prix * qte;
-            totalDom.innerHTML = formatPrix(total);
-            tvaDom.innerHTML = formatPrix(total * configTva / (100 + configTva));
-            totalHtDom.innerHTML = formatPrix(total / (1.0 + configTva/100));
-        }
-    </script>
+        
+        
+        $(document).ready(function () {
+            var clientSecret = $('input#stripe_clientSecret').val();
+
+            var form = document.getElementById('form-payment');
+            var errors = document.getElementById('card-errors');
+            var cardElement = document.getElementById('card-element');
+            
+            
+            var stripe = Stripe('{{ stripe_public_key }}');
+            var elements = stripe.elements();
+            var card = elements.create('card');
+            
+            card.mount('#card-element');
+            card.addEventListener('change', function(event) {
+                if (event.error) {
+                errors.textContent = event.error.message;
+                cardElement.classList.add('is-invalid');
+                } else {
+                errors.textContent = '';
+                cardElement.classList.remove('is-invalid');
+                }
+            });
+            
+            function submitForm(event){
+                event.preventDefault();
+            
+                stripe.handleCardPayment(
+                    clientSecret,
+                    card
+                ).then((result) => {
+                    if (result.error) {
+                        errors.textContent = result.error.message;
+                        form.classList.add('has-error');
+                    }else if('paymentIntent' in result){
+                        document.getElementById('{{form.token.vars.id}}').setAttribute('value', result.paymentIntent.id);
+                        $('#form-payment').submit();
+                    }
+                })  
+            }
+
+            $('#btn-pay').click(submitForm);
+
+        });
+    </script>    
 {% endblock %}

@@ -103,10 +103,10 @@ class AdminOrderController extends AbstractController
     {
         try{
             $order_id = $request->get('order_id', -1);
-            $this->orderService->changeStatus($order_id, OrderCoffret::VALIDATED);
+            $this->orderService->changeStatus($order_id, OrderCoffret::DELIVERED);
             $this->addFlash(
                 'success',
-                'Commande validée'
+                'Commande livrée'
             ); 
         } catch(\Exception $ex){
             $this->addFlash(

@@ -1,3 +1,7 @@
+{% set ORDER_STATUS_CREATED = constant('App\\Entity\\OrderCoffret::CREATED') %}
+{% set ORDER_STATUS_PAIED = constant('App\\Entity\\OrderCoffret::PAIED') %}
+{% set ORDER_STATUS_DELIVERED = constant('App\\Entity\\OrderCoffret::DELIVERED') %}
+
 {% extends 'base_admin.html.twig' %}
 
 {% block title %}Détails de la commande{% endblock %}
@@ -138,12 +142,14 @@
                                 <form action="{{ path('app_admin_order_validate') }}" method="post">
                                     <input type="hidden" value="{{order.id}}" name="order_id"/>
                                     <div class="order_button">
-                                        {% if order.statut == 1 %}
-                                            <button type="submit">Valider</button>
-                                        {% else %}
-                                            <button type="button" style="opacity : 0.5;" disabled>Commande déjà validée</button>
+                                        {% if order.statut == ORDER_STATUS_PAIED %}
+                                            <button type="submit">Livrer</button>
+                                        {% elseif order.statut == ORDER_STATUS_DELIVERED %}
+                                            <button type="button" style="opacity : 0.5;" disabled>Commande déjà livrée</button>
                                         {% endif %}
+                                        {% if order.statut != ORDER_STATUS_CREATED %}
                                         <a href="/files/{{order.getInvoicePath}}" class="btn btn-success"  download><i class="fa-solid fa-file-arrow-down"></i> Télécharger facture</a>
+                                        {% endif %}
                                     </div>
                                 </form>
                             </div>
