@@ -41,7 +41,7 @@ class AdminTagBlogController extends AbstractController
     {
         $error = null;
         $page = $request->query->get('page', 1);
-        $limit = 5;
+        $limit = 10;
         $criteria = [
             ['prop' => 'nom','op' => 'LIKE'],
         ];

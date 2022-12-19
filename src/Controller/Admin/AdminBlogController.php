@@ -48,7 +48,7 @@ class AdminBlogController extends AbstractController
     {
         $error = null;
         $page = $request->query->get('page', 1);
-        $limit = 5;
+        $limit = 10;
         $criteria = [
             ['prop' => 'dateMin', 'col' => 'datePublication', 'op' => '>='],
             ['prop' => 'dateMax', 'col' => 'datePublication', 'op' => '<='],
