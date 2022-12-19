@@ -4,6 +4,7 @@ namespace App\Service;
 use App\Entity\OrderCoffret;
 use App\Repository\CoffretRepository;
 use App\Repository\OrderCoffretRepository;
+use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -19,9 +20,9 @@ class OrderCoffretService
     private $wrapper;
     private $fileHandler;
     private $configService;
+    private $repoUser;
 
-
-    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository, MailService $mailService, DompdfWrapperInterface $wrapper, FileHandler $fileHandler, ConfigService $configService)
+    public function __construct(EntityManagerInterface $entityManager, StripeService $stripeService, CoffretRepository $coffretRepository, OrderCoffretRepository $orderCoffretRepository, MailService $mailService, DompdfWrapperInterface $wrapper, FileHandler $fileHandler, ConfigService $configService, UserRepository $repoUser)
     {
         $this->entityManager = $entityManager;
         $this->stripeService = $stripeService;
@@ -32,6 +33,7 @@ class OrderCoffretService
         $this->wrapper = $wrapper;
         $this->fileHandler = $fileHandler;
         $this->configService = $configService;
+        $this->repoUser = $repoUser;
     }
 
     
@@ -100,6 +102,8 @@ class OrderCoffretService
     }
 
     public function sendFacture(OrderCoffret $order){
+        $adminEmail = $this->repoUser->find(1)->getMail();
+
         $body = $this->mailService->renderTwig('emails/commande.html.twig', [
             'order' => $order
         ]);
@@ -112,5 +116,16 @@ class OrderCoffretService
         $embeddedImages = ['logo' => 'assets/utils/images/logo.png'];
         $this->mailService->sendMail($mail, $attachmentsPath, null, $embeddedImages);
 
+
+        $bodyMailToAdmin = $this->mailService->renderTwig('emails/commande_detail.html.twig', [
+            'order' => $order
+        ]);
+        $MailToAdmin = [
+            'body' => $bodyMailToAdmin,
+            'subject' => "Commande coffret  n°{$order->getId()}",
+            'to' => $adminEmail
+        ];
+
+        $this->mailService->sendMail($MailToAdmin, $attachmentsPath, null, $embeddedImages);
     }
 }

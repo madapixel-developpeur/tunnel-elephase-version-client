@@ -50,10 +50,6 @@ class CheckoutController extends AbstractController
         $form = $this->createForm(OrderCoffretFormType::class, $order, ['payment' => $payment]);
         $form->handleRequest($request);
 
-        $email = [
-            'subject' => 'Commande coffret',
-            'body' => 'Texte body'
-        ];
 
         $adminEmail = $this->repoUser->find(1)->getMail();
 
@@ -62,7 +58,6 @@ class CheckoutController extends AbstractController
                 $stripeToken =  $form->get('token')->getData();
                 $order = $this->orderCoffretService->saveOrder($order, $stripeToken);
                 $request->getSession()->remove('order');
-                $this->mailerService->sendMail($email, [$order->getInvoicePath()], $adminEmail);
                 $this->addFlash('success', 'Commande effectuée');
                 return $this->redirectToRoute('app_home');
             } catch(Exception $ex){
