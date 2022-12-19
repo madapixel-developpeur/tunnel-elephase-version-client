@@ -9,9 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: OrderCoffretRepository::class)]
 class OrderCoffret
 {
-    public const CREATED = 1;
-    public const PAIED = 2;
-    public const DELIVERED = 3;
+    public const CREATED = 4;
+    public const PAIED = 1;
+    public const DELIVERED = 2;
 
     public const STATUS = [
         self::CREATED => "Créée",
