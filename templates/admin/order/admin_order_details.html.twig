@@ -42,49 +42,49 @@
                                 <div class="row">
 
                                     <div class="col-12 mb-20">
-                                        <label>Nom <span>*</span></label>
-                                        <input type="text" name="lastname" value="{{order.info.nom}}" disabled/>
-                                    </div>
-                                    <div class="col-12 mb-20">
-                                        <label>Prénom <span>*</span></label>
-                                        <input type="text" name="firstname" value="{{order.info.prenom}}" disabled/>
-                                    </div>
-                                    <div class="col-12 mb-20">
                                         <label>Nom de l'entrepise</label>
                                         <input type="text" name="firstname" value="{{order.info.nomEntreprise}}" disabled/>
                                     </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Prénom </label>
+                                        <input type="text" name="firstname" value="{{order.info.prenom}}" disabled/>
+                                    </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Nom </label>
+                                        <input type="text" name="lastname" value="{{order.info.nom}}" disabled/>
+                                    </div>
                                     <div class="col-lg-6 mb-20">
-                                        <label>Téléphone<span>*</span></label>
+                                        <label>Téléphone</label>
                                         <input type="text" name="phone" value="{{order.info.telephone}}" disabled/>
 
                                     </div>
                                     <div class="col-lg-6 mb-20">
-                                        <label> Adresse e-mail<span>*</span></label>
+                                        <label> Adresse e-mail</label>
                                         <input type="text" name="mail" value="{{order.info.email}}" disabled/>
 
                                     </div>
-                                    <div class="col-lg-6 mb-20">
-                                        <label>Adresse de livraison<span>*</span></label>
-                                        <input type="text" name="address" value="{{order.info.paysRegion}}" disabled/>
-                                    </div>
-                                    <div class="col-lg-6 mb-20">
-                                        <label>Adresse de facturation<span>*</span></label>
-                                        <input type="text" name="address" value="{{order.info.lot}}" disabled/>
-                                    </div>
-                                     <div class="col-6 mb-20">
-                                        <label>Rue <span>*</span></label>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Numéro et nom de rue </label>
                                         <input type="text" name="postal_code" value="{{order.info.rue}}" disabled/>
                                     </div>
-                                    <div class="col-6 mb-20">
-                                        <label>Code Postal <span>*</span></label>
-                                        <input type="text" name="postal_code" value="{{order.info.codePostal}}" disabled/>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Bâtiment, appartement, lot, etc. </label>
+                                        <input type="text" name="address" value="{{order.info.lot}}" disabled/>
                                     </div>
-                                    <div class="col-6 mb-20">
-                                        <label>Ville <span>*</span></label>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Ville </label>
                                         <input type="text" name="postal_code" value="{{order.info.ville}}" disabled/>
                                     </div>
-                                    <div class="col-6 mb-20">
-                                        <label>Province/département<span>*</span></label>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Code Postal </label>
+                                        <input type="text" name="postal_code" value="{{order.info.codePostal}}" disabled/>
+                                    </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Pays/région</label>
+                                        <input type="text" name="address" value="{{order.info.paysRegion}}" disabled/>
+                                    </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Province/département</label>
                                         <input type="text" name="postal_code" value="{{order.info.provinceDepartement}}" disabled/>
                                     </div>
                                     <div class="col-12">
@@ -148,7 +148,7 @@
                                             <button type="button" style="opacity : 0.5;" disabled>Commande déjà livrée</button>
                                         {% endif %}
                                         {% if order.statut != ORDER_STATUS_CREATED %}
-                                        <a href="/files/{{order.getInvoicePath}}" class="btn btn-success"  download><i class="fa-solid fa-file-arrow-down"></i> Télécharger facture</a>
+                                        <a href="/files/{{order.getInvoicePath}}" class="btn btn-outline-info"  download><i class="fa fa-file-pdf-o"></i> Télécharger facture</a>
                                         {% endif %}
                                     </div>
                                 </form>
