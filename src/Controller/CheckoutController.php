@@ -50,9 +50,6 @@ class CheckoutController extends AbstractController
         $form = $this->createForm(OrderCoffretFormType::class, $order, ['payment' => $payment]);
         $form->handleRequest($request);
 
-
-        $adminEmail = $this->repoUser->find(1)->getMail();
-
         if ($form->isSubmitted() && $form->isValid()) {
             try{
                 $stripeToken =  $form->get('token')->getData();
