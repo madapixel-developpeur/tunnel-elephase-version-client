@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Twig\Environment as Twig_Environment;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Mime\Address;
@@ -13,8 +14,6 @@ class MailService{
     private $mailer;
     private $twig;
     private $parameterBag;
-
-
 
     public function __construct($mailerSendFrom, $mailerSendFromName, MailerInterface $mailer, Twig_Environment $twig, ParameterBagInterface $parameterBag)
     {
@@ -49,7 +48,6 @@ class MailService{
         $this->mailer->send($email);
     }
 
-    
     public function renderTwig($filePath, $options = []){
         return $this->twig->render($filePath, $options);
     }

@@ -6,8 +6,10 @@ namespace App\Controller;
 use App\Entity\OrderCoffret;
 use App\Form\OrderCoffretFormType;
 use App\Repository\CoffretRepository;
+use App\Repository\UserRepository;
 use App\Service\OrderCoffretService;
 use App\Service\ConfigService;
+use App\Service\MailService;
 use App\Service\StripeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -23,13 +25,17 @@ class CheckoutController extends AbstractController
     private $coffretRepository;
     private $orderCoffretService;
     private $stripeService;
+    private $mailerService;
+    private $repoUser;
 
-    public function __construct(EntityManagerInterface $entityManager, CoffretRepository $coffretRepository, OrderCoffretService $orderCoffretService, StripeService $stripeService)
+    public function __construct(EntityManagerInterface $entityManager, CoffretRepository $coffretRepository, OrderCoffretService $orderCoffretService, StripeService $stripeService, MailService $mailerService, UserRepository $repoUser)
     {
         $this->entityManager = $entityManager;
         $this->coffretRepository = $coffretRepository;
         $this->orderCoffretService = $orderCoffretService;
         $this->stripeService = $stripeService;
+        $this->mailerService = $mailerService;
+        $this->repoUser = $repoUser;
     }
 
 
@@ -44,11 +50,19 @@ class CheckoutController extends AbstractController
         $form = $this->createForm(OrderCoffretFormType::class, $order, ['payment' => $payment]);
         $form->handleRequest($request);
 
+        $email = [
+            'subject' => 'Commande coffret',
+            'body' => 'Texte body'
+        ];
+
+        $adminEmail = $this->repoUser->find(1)->getMail();
+
         if ($form->isSubmitted() && $form->isValid()) {
             try{
                 $stripeToken =  $form->get('token')->getData();
                 $order = $this->orderCoffretService->saveOrder($order, $stripeToken);
                 $request->getSession()->remove('order');
+                $this->mailerService->sendMail($email, [$order->getInvoicePath()], $adminEmail);
                 $this->addFlash('success', 'Commande effectuée');
                 return $this->redirectToRoute('app_home');
             } catch(Exception $ex){
