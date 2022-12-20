@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('assets/img/af_logo.png') }}">
+        <link rel="apple-touch-icon" href="/favicon.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicon.png">
+        <link rel="apple-touch-icon" sizes="167x167" href="/favicon.png">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
